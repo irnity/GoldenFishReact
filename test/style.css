@@ -1,0 +1,7 @@
+.page {
+  background-color: grey;
+  border: 1px solid red;
+  width: 90%;
+  margin: auto;
+  margin-top: -8px;
+}
