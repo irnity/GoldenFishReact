@@ -81,12 +81,14 @@
 .main-products-list-products {
   width: 80%;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   border: 1px solid red;
 }
 
 .product {
-  border: 0px solid red;
-  width: 33.33333%;
+  background-color: white;
+  margin: 15px 5px 15px 5px;
+  width: 30%;
   display: flex;
 }
