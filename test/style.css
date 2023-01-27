@@ -1,7 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .page {
   background-color: grey;
   border: 1px solid red;
   width: 90%;
   margin: auto;
-  margin-top: -8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* header top*/
+
+.header-top {
+  display: flex;
+  border: 1px solid red;
+}
+.header-top-info-href {
+  padding: 10px;
+  border: 1px solid red;
+}
+
+/* header bottom */
+
+.header-bottom {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid red;
+}
+
+.header-bottom-info {
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+/* main */
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  margin: 5px;
+}
+
+.main-catalog {
+  display: flex;
+  margin: 5px;
+  justify-content: space-around;
+  border: 1px solid red;
+}
+
+.main-catalog-section {
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+/* main-products */
+
+.main-products-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid red;
+}
+
+.main-products-list-name {
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+.main-products-list-products {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
+.product {
+  border: 0px solid red;
+  width: 33.33333%;
+  display: flex;
 }
