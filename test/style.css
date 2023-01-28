@@ -4,23 +4,41 @@
 }
 .page {
   background-color: #f3f3f3;
-  border: 1px solid red;
   width: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid red; */
 }
+
 /* header top*/
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 .header-top {
   display: flex;
-  border: 1px solid red;
+  justify-content: space-around;
+  background-color: #5a616e;
+  /* border: 1px solid red; */
 }
+
+.header-top-info-list {
+  display: flex;
+  padding: 5px;
+}
+
 .header-top-info-href {
-  padding: 10px;
-  border: 1px solid red;
+  padding: 5px;
+  display: block;
+  color: #fff;
+  line-height: 1;
+  font-weight: 400;
 }
 
 /* header bottom */
@@ -28,21 +46,41 @@
 .header-bottom {
   display: flex;
   justify-content: space-between;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .header-bottom-info {
   margin: 5px;
   padding: 10px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
+  
+.header-bottom-info-shopName {
+  font-size: 5vh;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
 }
 
 .header-bottom-left {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-bottom-right {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-bottom-signup {
+  margin: 5px;
+  padding: 15px;
+}
+
+.header-bottom-backet {
+  margin: 5px;
+  padding: 10px;
 }
 
 /* main */
@@ -52,21 +90,36 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
   margin: 5px;
+  /* border: 1px solid red; */
 }
 
 .main-catalog {
+  width: 100%;
   display: flex;
-  margin: 5px;
-  justify-content: space-around;
-  border: 1px solid red;
+  justify-content: center;
+  /* border: 1px solid red; */
 }
 
 .main-catalog-section {
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid red;
+  padding: 4.5vh;
+  margin: 15px 0 0 0;
+  width: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #5a616e;
+  border-right: 0.01px solid black;
+  border-left: 0.01px solid black;
+}
+.main-catalog-section:nth-child(1) {
+  border-radius: 5% 0 0 0;
+  border-left: none;
+}
+.main-catalog-section:last-child {
+  border-radius: 0 5% 0 0;
+  border-right: none;
 }
 
 /* main-products */
@@ -78,21 +131,33 @@
   align-items: center;
   width: 100%;
   min-height: 500px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .main-products-list-name {
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid red;
+  width: 100%;
+  margin: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* border-bottom: 1px solid red; */
+}
+
+.main-products-list-name-text {
+  width: 100%;
+  padding: 15px;
+  font-size: 5vh;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  border-bottom: 5px solid rgba(128, 128, 128, 0.438);
 }
 
 .main-products-list-products {
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 /* products */
@@ -100,6 +165,7 @@
 .product {
   margin: 15px 5px 15px 5px;
   width: 30%;
+  min-height: 12em;
   display: flex;
   justify-content: center;
 }
@@ -117,11 +183,16 @@
 }
 
 .product-text {
+  width: 50%;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   margin-right: 15px;
+}
+
+ul {
+  list-style: none;
 }
 
 .product-text-p {
