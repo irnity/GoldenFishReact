@@ -3,7 +3,7 @@
   padding: 0;
 }
 .page {
-  background-color: grey;
+  background-color: #f3f3f3;
   border: 1px solid red;
   width: 90%;
   margin: auto;
@@ -27,7 +27,7 @@
 
 .header-bottom {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 1px solid red;
 }
 
@@ -35,6 +35,14 @@
   margin: 5px;
   padding: 10px;
   border: 1px solid red;
+}
+
+.header-bottom-left {
+  display: flex;
+}
+
+.header-bottom-right {
+  display: flex;
 }
 
 /* main */
@@ -66,9 +74,10 @@
 .main-products-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
+  min-height: 500px;
   border: 1px solid red;
 }
 
@@ -86,9 +95,78 @@
   border: 1px solid red;
 }
 
+/* products */
+
 .product {
-  background-color: white;
   margin: 15px 5px 15px 5px;
   width: 30%;
   display: flex;
+  justify-content: center;
+}
+
+.product-image {
+  width: 50%;
+  height: 50;
+  border-radius: 5%;
+  background-color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+.product-text {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+.product-text-p {
+  font-size: 2.3vh;
+}
+
+/* footer */
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #323a45;
+}
+.footer-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-top-block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: white;
+}
+.footer-top-block-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.footer-top-block-text span {
+  color: white;
+  padding: 5px;
+}
+
+.footer-bottom {
+  display: flex;
+  margin-left: 15px;
+  padding: 15px;
+  background-color: #2b313b;
+  color: white;
 }
