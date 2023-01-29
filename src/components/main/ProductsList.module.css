@@ -1,0 +1,51 @@
+/* main-products*/
+
+.main_products_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 500px;
+  /* border: 1px solid red; */
+}
+
+/* main-products-list */
+
+.main_product_list_top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main_products_list_name {
+  width: 70%;
+  margin: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* border-bottom: 1px solid red; */
+}
+
+.main_products_list_name_text {
+  width: 100%;
+  padding: 15px;
+  font-size: 5vh;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  border-bottom: 5px solid rgba(128, 128, 128, 0.438);
+}
+
+
+/* main products */
+
+.main_products_list_products {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* border: 1px solid red; */
+}
+
+

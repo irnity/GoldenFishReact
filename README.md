@@ -12,5 +12,11 @@ App.js
          <Basket>
 
   <Main>
+    <CartMain>
+      <NavigationMain />
+      <ProductsList />
+        <AddProduct />
+        <Product />
+    
   
   <Footer>
