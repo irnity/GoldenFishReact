@@ -54,7 +54,7 @@ header {
   padding: 10px;
   /* border: 1px solid red; */
 }
-  
+
 .header-bottom-info-shopName {
   font-size: 5vh;
   font-family: "Dancing Script", cursive;
@@ -122,7 +122,7 @@ header {
   border-right: none;
 }
 
-/* main-products */
+/* main-products*/
 
 .main-products-list {
   display: flex;
@@ -134,8 +134,17 @@ header {
   /* border: 1px solid red; */
 }
 
-.main-products-list-name {
+/* main-products-list */
+
+.main-product-list-top {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-products-list-name {
+  width: 70%;
   margin: 15px;
   display: flex;
   justify-content: flex-start;
@@ -151,6 +160,23 @@ header {
   font-weight: 700;
   border-bottom: 5px solid rgba(128, 128, 128, 0.438);
 }
+
+.main-product-list-add {
+  width: 30%;
+  text-align: center;
+  margin-right: 10px;
+  padding: 15px;
+  font-size: 5vh;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  border-bottom: 5px solid rgba(128, 128, 128, 0.438);
+}
+
+.main-product-list-add-button {
+  font-size: 3vh;
+}
+
+/* main products */
 
 .main-products-list-products {
   width: 100%;
