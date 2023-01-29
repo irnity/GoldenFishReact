@@ -1,0 +1,19 @@
+.header_top {
+  display: flex;
+  justify-content: space-around;
+  background-color: #5a616e;
+  /* border: 1px solid red; */
+}
+
+.header_top_info_list {
+  display: flex;
+  padding: 5px;
+}
+
+.header_top_info_href {
+  padding: 5px;
+  display: block;
+  color: #fff;
+  line-height: 1;
+  font-weight: 400;
+}

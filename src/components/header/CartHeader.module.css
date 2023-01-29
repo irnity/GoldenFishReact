@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+}
+
+/* header bottom */
+
+.header_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_bottom_left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_bottom_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

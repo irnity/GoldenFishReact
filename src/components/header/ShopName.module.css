@@ -1,0 +1,11 @@
+.header_bottom_info {
+  margin: 5px;
+  padding: 10px;
+  /* border: 1px solid red; */
+}
+
+.header_bottom_info_shopName {
+  font-size: 5vh;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+}

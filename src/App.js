@@ -1,9 +1,17 @@
-import classes from "./App.module.css"
+import "./App.css"
+import Footer from "./components/footer/Footer"
+import Header from "./components/header/Header.js"
+import Main from "./components/main/Main"
+import MainCart from "./components/mainPage/MainCart"
 
 function App() {
-  return <div className={classes.page}>
-    <header></header>
-  </div>
+  return (
+    <MainCart>
+      <Header />
+      <Main />
+      <Footer />
+    </MainCart>
+  )
 }
 
 export default App
