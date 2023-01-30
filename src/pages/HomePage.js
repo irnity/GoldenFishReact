@@ -1,15 +1,8 @@
 import React from "react"
+import Home from "../components/home/Home"
 
 function HomePage() {
-  return (
-    <div>
-      <div>HomePage</div>
-      <div>HomePage</div>
-      <div>HomePage</div>
-      <div>HomePage</div>
-      <div>HomePage</div>
-    </div>
-  )
+  return <Home />
 }
 
 export default HomePage

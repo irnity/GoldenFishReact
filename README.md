@@ -31,6 +31,8 @@
 
    <!-- "products" -->
    <ProductsListPage>
+    <Main>
 
    <!-- "products/:id" -->
    <Product>
+    <Product />
