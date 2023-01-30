@@ -1,3 +1,4 @@
+import NavigationMain from "../main/NavigationMain"
 import Basket from "./Basket"
 import CartHeader from "./CartHeader"
 import SearchHeader from "./SearchHeader"
@@ -6,20 +7,23 @@ import Signup from "./Signup"
 
 function Header() {
   return (
-    <CartHeader
-      leftSide={
-        <>
-          <ShopName />
-          <SearchHeader />
-        </>
-      }
-      rightSide={
-        <>
-          <Signup />
-          <Basket />
-        </>
-      }
-    />
+    <>
+      <CartHeader
+        leftSide={
+          <>
+            <ShopName />
+            <SearchHeader />
+          </>
+        }
+        rightSide={
+          <>
+            <Signup />
+            <Basket />
+          </>
+        }
+      />
+      <NavigationMain />
+    </>
   )
 }
 

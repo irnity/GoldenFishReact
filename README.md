@@ -1,4 +1,4 @@
-App.js
+<!-- DomTree -->
 <MainCart>
 
   <Header>
@@ -10,13 +10,27 @@ App.js
        <rightSide>
          <Signup>
          <Basket>
+      <NavigationMain />
 
   <Main>
     <CartMain>
-      <NavigationMain />
       <ProductsList />
         <AddProduct />
         <Product />
     
   
   <Footer>
+
+<!-- Router -->
+
+<RouterProvider/>
+  <RootLayout>
+
+   <!-- "/" -->
+   <HomePage>
+
+   <!-- "products" -->
+   <ProductsListPage>
+
+   <!-- "products/:id" -->
+   <Product>
