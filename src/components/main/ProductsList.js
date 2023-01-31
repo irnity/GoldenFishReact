@@ -5,7 +5,7 @@ import AddProduct from "./AddProduct"
 import classes from "./ProductsList.module.css"
 
 function ProductsList() {
-  const products = useSelector((state) => state.products)
+  const products = useSelector((state) => state.products.products)
 
   return (
     <div className={classes.main_products_list}>
@@ -20,9 +20,9 @@ function ProductsList() {
       <div className={classes.main_products_list_products}>
         {products.map((product) => {
           return (
-            <div className={classes.product}>
+            <div className={classes.product} key={product.id}>
               <div className={classes.product_image}>
-                <Link to={`:${product.id}`}>
+                <Link to={product.id}>
                   <img
                     src="https://i.flagman.kiev.ua/goods/1289/1289661.png"
                     alt={`${product.id}`}

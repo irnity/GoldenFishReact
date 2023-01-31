@@ -1,15 +1,29 @@
-import { useParams } from "react-router-dom"
+// css
 import classes from "./Product.module.css"
-import { useSelector } from "react-redux"
+// router
+import { useParams } from "react-router-dom"
+// redux
+import { useDispatch, useSelector } from "react-redux"
+import { productsActions } from "../../store/productsSlice"
 
 function Product() {
   const params = useParams()
+  // path product id we get from ProductsList id
   const id = params.productId
 
-  const products = useSelector((state) => state.products)
+  // redux
+  // get all products
+  const products = useSelector((state) => state.products.products)
+  // get spesific project by id
+  const product = products.find((product) => product.id === id)
+  // console.log(product)
 
-  const product = products.filter((product) => product.id === params.productId)
-  console.log(product)
+  const dispatch = useDispatch()
+
+  const removeHandler = () => {
+    dispatch(productsActions.removeProduct(id))
+  }
+
   return (
     <div className={classes.product_box}>
       <div className={classes.product_top}>
@@ -18,36 +32,42 @@ function Product() {
         </div>
 
         <div className={classes.product_text}>
-          {/*  */}
           <div className={classes.product_text_top}>
             <div>
-              <p>Фідерне вудлище Flagman Mantaray Pro Feeder 3.6м 100г</p>
+              {/* product name */}
+              <p>{product.title}</p>
             </div>
             <div className={classes.product_text_top_code}>
-              <p>{id}</p>
+              {/* id */}
+              <p>Код товару: {product.id}</p>
             </div>
           </div>
-          {/*  */}
           <div className={classes.product_text_mid}>
             <div className={classes.product_text_mid_top}>
-              <span>В наявності</span>
+              {/* check if in stock */}
+              {product.inStock >= 1 ? (
+                <span>В наявності</span>
+              ) : (
+                <span>Немає в наявності</span>
+              )}
             </div>
             <div className={classes.product_text_mid_top}>
-              <span>4266 грн.</span>
+              <span>{product.price}грн.</span>
             </div>
             <div className={classes.product_text_mid_top}>
-              <button>Купити</button>
+              <button onClick={removeHandler}>Купити</button>
             </div>
           </div>
           <div className={classes.product_text_bottom}>
             <div>
-              <ul>
+              {/* <ul>
                 <li>Довжина: 3.6 м</li>
                 <li>Кількість секцій: 3 + 3</li>
                 <li>Матеріал бланка: Графит (карбон)</li>
                 <li>Дія: Швидка (Fast)</li>
                 <li>Вага: 250 г</li>
-              </ul>
+              </ul> */}
+              {product.description}
             </div>
           </div>
         </div>

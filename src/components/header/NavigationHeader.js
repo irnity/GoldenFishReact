@@ -17,7 +17,7 @@ function NavigationHeader() {
             </Link>
           </li>
           <li>
-            <Link to="products/:1" className={classes.header_top_info_href}>
+            <Link to="products/p1" className={classes.header_top_info_href}>
               Product
             </Link>
           </li>

@@ -7,6 +7,7 @@ import RootLayout from "./pages/RootLayout"
 import HomePage from "./pages/HomePage"
 import ProductsListPage from "./pages/ProductsListPage"
 import ProductPage from "./pages/ProductPage"
+import NewProductPage from "./pages/NewProductPage"
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,7 @@ function App() {
               id: "product-detail",
               element: <ProductPage />,
             },
+            { path: "add-product", element: <NewProductPage /> },
           ],
         },
       ],
