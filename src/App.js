@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage"
 import ProductsListPage from "./pages/ProductsListPage"
 import ProductPage from "./pages/ProductPage"
 import NewProductPage from "./pages/NewProductPage"
+import { action as addNewProduct } from "./components/main/NewProductForm"
 
 function App() {
   const router = createBrowserRouter([
@@ -28,7 +29,11 @@ function App() {
               id: "product-detail",
               element: <ProductPage />,
             },
-            { path: "add-product", element: <NewProductPage /> },
+            {
+              path: "add-product",
+              element: <NewProductPage />,
+              action: addNewProduct,
+            },
           ],
         },
       ],
