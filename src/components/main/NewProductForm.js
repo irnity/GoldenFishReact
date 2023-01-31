@@ -1,4 +1,4 @@
-import { Form, json, redirect } from "react-router-dom"
+import { Form, redirect } from "react-router-dom"
 import classes from "./NewProductForm.module.css"
 
 function NewProductForm({ method }) {

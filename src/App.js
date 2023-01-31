@@ -10,7 +10,17 @@ import ProductPage from "./pages/ProductPage"
 import NewProductPage from "./pages/NewProductPage"
 import { action as addNewProduct } from "./components/main/NewProductForm"
 
+import { fetchProductsData } from "./store/products-actions"
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchProductsData())
+  }, [dispatch])
+  
   const router = createBrowserRouter([
     {
       path: "/",

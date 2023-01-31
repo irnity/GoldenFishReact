@@ -1,8 +1,8 @@
 // react
-import { useEffect } from "react"
+
 // redux
-import { useDispatch, useSelector } from "react-redux"
-import { productsActions } from "../../store/productsSlice"
+import { useSelector } from "react-redux"
+
 // route
 import { Link } from "react-router-dom"
 import AddProduct from "./AddProduct"
@@ -11,12 +11,6 @@ import classes from "./ProductsList.module.css"
 
 function ProductsList() {
   const products = useSelector((state) => state.products.products)
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchCartData())
-  }, [dispatch])
 
   return (
     <div className={classes.main_products_list}>
@@ -30,24 +24,18 @@ function ProductsList() {
 
       <div className={classes.main_products_list_products}>
         {products.map((product) => {
+          console.log(product)
           return (
             <div className={classes.product} key={product.id}>
               <div className={classes.product_image}>
                 <Link to={product.id}>
-                  <img
-                    src="https://i.flagman.kiev.ua/goods/1289/1289661.png"
-                    alt={`${product.id}`}
-                  />
+                  <img src={product.image} alt={`${product.id}`} />
                 </Link>
               </div>
 
               <ul className={classes.product_text}>
-                <li className={classes.product_text_p}>Вид</li>
-                <li className={classes.product_text_p}>Фірма</li>
-                <li className={classes.product_text_p}>Фірма</li>
-                <li className={classes.product_text_p}>Фірма</li>
-                <li className={classes.product_text_p}>Фірма</li>
-                <li className={classes.product_text_p}>Фірма</li>
+                <li className={classes.product_text_p}>{product.title}</li>
+                <li className={classes.product_text_p}>{product.price}</li>
               </ul>
             </div>
           )

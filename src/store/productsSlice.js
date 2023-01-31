@@ -1,36 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialProductsState = {
-  products: [
-    {
-      id: "p1",
-      title: "Фідерне вудлище Flagman Mantaray Pro Feeder 3.6м 100г",
-      price: 5,
-      description: "This is a first product - amazing!",
-      inStock: 1,
-    },
-    {
-      id: "p2",
-      title: "Фідерне вудлище Flagman Mantaray Pro Feeder 2.6м 80г",
-      price: 10,
-      description: "This is a second product - amazing!",
-      inStock: 1,
-    },
-    {
-      id: "p3",
-      title: "Фідерне вудлище Flagman Mantaray Pro Feeder 1.6м 60",
-      price: 15,
-      description: "This is a second product - amazing!",
-      inStock: 0,
-    },
-  ],
-  totalAmountProduct: 0,
+  products: [],
 }
 
 const productSlice = createSlice({
   name: "Products",
   initialState: initialProductsState,
   reducers: {
+    replaceProducts(state, actions) {
+      // state.products = actions.products
+      state.products = actions.payload
+    },
     addProduct(state, actions) {
       const newProduct = actions.payload
       state.products.push({
