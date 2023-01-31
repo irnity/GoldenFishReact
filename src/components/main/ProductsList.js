@@ -1,4 +1,9 @@
-import { useSelector } from "react-redux"
+// react
+import { useEffect } from "react"
+// redux
+import { useDispatch, useSelector } from "react-redux"
+import { productsActions } from "../../store/productsSlice"
+// route
 import { Link } from "react-router-dom"
 import AddProduct from "./AddProduct"
 
@@ -6,6 +11,12 @@ import classes from "./ProductsList.module.css"
 
 function ProductsList() {
   const products = useSelector((state) => state.products.products)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCartData())
+  }, [dispatch])
 
   return (
     <div className={classes.main_products_list}>
