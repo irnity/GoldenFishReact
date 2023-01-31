@@ -19,12 +19,15 @@ function App() {
         {
           // products page
           path: "products",
-          element: <ProductsListPage />,
-        },
-        {
-          // product page
-          path: "products/:product",
-          element: <ProductPage />,
+          children: [
+            { index: true, element: <ProductsListPage /> },
+            {
+              // product page
+              path: ":productId",
+              id: "product-detail",
+              element: <ProductPage />,
+            },
+          ],
         },
       ],
     },

@@ -1,6 +1,15 @@
+import { useParams } from "react-router-dom"
 import classes from "./Product.module.css"
+import { useSelector } from "react-redux"
 
 function Product() {
+  const params = useParams()
+  const id = params.productId
+
+  const products = useSelector((state) => state.products)
+
+  const product = products.filter((product) => product.id === params.productId)
+  console.log(product)
   return (
     <div className={classes.product_box}>
       <div className={classes.product_top}>
@@ -15,7 +24,7 @@ function Product() {
               <p>Фідерне вудлище Flagman Mantaray Pro Feeder 3.6м 100г</p>
             </div>
             <div className={classes.product_text_top_code}>
-              <p>Код: MPF360</p>
+              <p>{id}</p>
             </div>
           </div>
           {/*  */}
@@ -43,7 +52,31 @@ function Product() {
           </div>
         </div>
       </div>
-      <div className={classes.product_bottom}>dsdsd</div>
+      <div className={classes.product_bottom}>
+        <div className={classes.product_bottom_block}>
+          <div className={classes.product_bottom_block_text}>
+            <span>Усе</span>
+          </div>
+          <div className={classes.product_bottom_block_text}>
+            <span>Характеристики</span>
+          </div>
+          <div className={classes.product_bottom_block_text}>
+            <span>Опис</span>
+          </div>
+          <div className={classes.product_bottom_block_text}>
+            <span>Аксесуари</span>
+          </div>
+          <div className={classes.product_bottom_block_text}>
+            <span>Фото та відео</span>
+          </div>
+          <div className={classes.product_bottom_block_text}>
+            <span>Рекомендовані товари</span>
+          </div>
+          <div className={classes.product_bottom_block_text}>
+            <span>Відгуки</span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
