@@ -3,20 +3,13 @@ import classes from "./Product.module.css"
 // router
 import { useParams } from "react-router-dom"
 // redux
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { productsActions } from "../../store/productsSlice"
 
-function Product() {
+function Product({ product }) {
   const params = useParams()
   // path product id we get from ProductsList id
   const id = params.productId
-
-  // redux
-  // get all products
-  const products = useSelector((state) => state.products.products)
-  // get spesific project by id
-  const product = products.find((product) => product.id === id)
-  // console.log(product)
 
   const dispatch = useDispatch()
 

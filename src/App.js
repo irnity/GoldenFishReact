@@ -5,8 +5,10 @@ import "./App.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import RootLayout from "./pages/RootLayout"
 import HomePage from "./pages/HomePage"
-import ProductsListPage, { loader } from "./pages/ProductsListPage"
-import ProductPage from "./pages/ProductPage"
+import ProductsListPage, {
+  loader as productsListLoader,
+} from "./pages/ProductsListPage"
+import ProductPage, { loader as prooductLoader } from "./pages/ProductPage"
 import NewProductPage from "./pages/NewProductPage"
 import { action as addNewProduct } from "./components/main/NewProductForm"
 
@@ -34,11 +36,17 @@ function App() {
           path: "products",
           errorElement: <ErrorPage />,
           children: [
-            { index: true, loader: loader, element: <ProductsListPage /> },
+            {
+              index: true,
+              loader: productsListLoader,
+              element: <ProductsListPage />,
+            },
             {
               // product page
               path: ":productId",
               id: "product-detail",
+              // load 
+              loader: prooductLoader,
               element: <ProductPage />,
             },
             {
