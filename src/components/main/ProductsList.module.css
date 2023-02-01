@@ -42,7 +42,7 @@
 .main_products_list_products {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   /* border: 1px solid red; */
 }

@@ -62,9 +62,6 @@ export async function action({ request, params }) {
 
   // edit
   const productData = {
-    id: Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1),
     title: data.get("title"),
     price: data.get("price"),
     image: data.get("image"),

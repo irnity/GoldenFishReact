@@ -12,7 +12,6 @@ import classes from "./ProductsList.module.css"
 function ProductsList() {
   const products = useSelector((state) => state.products.products)
   console.log(products)
-  console.log(products[0], products[1], products[2], products[3])
 
   return (
     <div className={classes.main_products_list}>

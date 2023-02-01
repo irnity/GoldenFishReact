@@ -13,6 +13,7 @@ import { action as addNewProduct } from "./components/main/NewProductForm"
 import { fetchProductsData } from "./store/products-actions"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
+import ErrorPage from "./store/ErrorPage"
 
 function App() {
   const dispatch = useDispatch()
@@ -20,17 +21,20 @@ function App() {
   useEffect(() => {
     dispatch(fetchProductsData())
   }, [dispatch])
-  
+
   const router = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
+      errorElement: <ErrorPage />,
       children: [
         // home page
         { index: true, element: <HomePage /> },
         {
           // products page
           path: "products",
+          errorElement: <ErrorPage />,
+          // loader:
           children: [
             { index: true, element: <ProductsListPage /> },
             {

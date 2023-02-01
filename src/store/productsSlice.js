@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialProductsState = {
   products: [],
+  loaded: false,
 }
 
 const productSlice = createSlice({
@@ -10,16 +11,21 @@ const productSlice = createSlice({
   reducers: {
     replaceProducts(state, actions) {
       // our data from fetch firebase
-      const data = actions.payload
-      for (const key in data) {
-        state.products.push({
-          id: key,
-          title: data[key].title,
-          image: data[key].image,
-          price: data[key].price,
-          description: data[key].description,
-          isStock: data[key].inStock,
-        })
+      if (state.loaded === false) {
+        state.loaded = true
+        const data = actions.payload
+        for (const key in data) {
+          state.products.push({
+            id: key,
+            title: data[key].title,
+            image: data[key].image,
+            price: data[key].price,
+            description: data[key].description,
+            isStock: data[key].inStock,
+          })
+        }
+      } else {
+        return
       }
     },
     addProduct(state, actions) {
