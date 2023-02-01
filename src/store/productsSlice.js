@@ -9,8 +9,18 @@ const productSlice = createSlice({
   initialState: initialProductsState,
   reducers: {
     replaceProducts(state, actions) {
-      // state.products = actions.products
-      state.products = actions.payload
+      // our data from fetch firebase
+      const data = actions.payload
+      for (const key in data) {
+        state.products.push({
+          id: key,
+          title: data[key].title,
+          image: data[key].image,
+          price: data[key].price,
+          description: data[key].description,
+          isStock: data[key].inStock,
+        })
+      }
     },
     addProduct(state, actions) {
       const newProduct = actions.payload

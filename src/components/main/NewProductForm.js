@@ -33,6 +33,16 @@ function NewProductForm({ method }) {
           defaultValue={""}
         />
       </p>
+      <p>
+        <label htmlFor="inStock">inStock</label>
+        <textarea
+          id="inStock"
+          type="number"
+          name="inStock"
+          required
+          defaultValue={""}
+        />
+      </p>
       <div className={classes.actions}>
         {/* navigate to home */}
         <button type="button">Cancel</button>
@@ -52,10 +62,14 @@ export async function action({ request, params }) {
 
   // edit
   const productData = {
+    id: Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1),
     title: data.get("title"),
-    image: data.get("image"),
     price: data.get("price"),
+    image: data.get("image"),
     description: data.get("description"),
+    inStock: data.get("inStock"),
   }
 
   // if we create newEvent
@@ -64,10 +78,10 @@ export async function action({ request, params }) {
 
   const response = await fetch(url, {
     method: method,
+    body: JSON.stringify(productData),
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(productData),
   })
   if (!response.ok) {
     throw new Error("Sending product data failed")
