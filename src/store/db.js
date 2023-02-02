@@ -11,3 +11,14 @@ products = {
   ],
   totalAmountProduct: 0,
 }
+
+//
+state.products.push({
+  id: key,
+  code: data[key].code || "code",
+  title: data[key].title,
+  image: data[key].image,
+  price: data[key].price,
+  description: data[key].description,
+  isStock: data[key].inStock,
+})

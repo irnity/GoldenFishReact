@@ -1,3 +1,4 @@
+// dont work with router
 // import { productsActions } from "./productsSlice"
 
 // export const fetchProductsData = () => {

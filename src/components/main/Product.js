@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 // redux
 import { useDispatch } from "react-redux"
 import { productsActions } from "../../store/productsSlice"
+import AboutBottomProduct from "./AboutBottomProduct"
 
 function Product({ product }) {
   const params = useParams()
@@ -13,6 +14,7 @@ function Product({ product }) {
 
   const dispatch = useDispatch()
 
+  // doesnt work now
   const removeHandler = () => {
     dispatch(productsActions.removeProduct(id))
   }
@@ -21,7 +23,7 @@ function Product({ product }) {
     <div className={classes.product_box}>
       <div className={classes.product_top}>
         <div className={classes.product_image}>
-          <img src="https://i.flagman.kiev.ua/goods/1289/1289661.png" alt="" />
+          <img src={product.image} alt="" />
         </div>
 
         <div className={classes.product_text}>
@@ -32,7 +34,7 @@ function Product({ product }) {
             </div>
             <div className={classes.product_text_top_code}>
               {/* id */}
-              <p>Код товару: {product.id}</p>
+              <p>Код товару: {product.code || "code"}</p>
             </div>
           </div>
           <div className={classes.product_text_mid}>
@@ -65,31 +67,7 @@ function Product({ product }) {
           </div>
         </div>
       </div>
-      <div className={classes.product_bottom}>
-        <div className={classes.product_bottom_block}>
-          <div className={classes.product_bottom_block_text}>
-            <span>Усе</span>
-          </div>
-          <div className={classes.product_bottom_block_text}>
-            <span>Характеристики</span>
-          </div>
-          <div className={classes.product_bottom_block_text}>
-            <span>Опис</span>
-          </div>
-          <div className={classes.product_bottom_block_text}>
-            <span>Аксесуари</span>
-          </div>
-          <div className={classes.product_bottom_block_text}>
-            <span>Фото та відео</span>
-          </div>
-          <div className={classes.product_bottom_block_text}>
-            <span>Рекомендовані товари</span>
-          </div>
-          <div className={classes.product_bottom_block_text}>
-            <span>Відгуки</span>
-          </div>
-        </div>
-      </div>
+      <AboutBottomProduct product={product} />
     </div>
   )
 }

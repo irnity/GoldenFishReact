@@ -16,6 +16,7 @@ import { action as addNewProduct } from "./components/main/NewProductForm"
 // import { useDispatch } from "react-redux"
 // import { useEffect } from "react"
 import ErrorPage from "./store/ErrorPage"
+import InformationPage from "./pages/aboutProduct/InformationPage"
 
 function App() {
   // const dispatch = useDispatch()
@@ -45,9 +46,15 @@ function App() {
               // product page
               path: ":productId",
               id: "product-detail",
-              // load 
+              // load
               loader: prooductLoader,
               element: <ProductPage />,
+              children: [
+                {
+                  path: "all",
+                  element: <InformationPage />,
+                },
+              ],
             },
             {
               path: "add-product",

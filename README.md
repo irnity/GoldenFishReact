@@ -29,10 +29,27 @@
    <!-- "/" -->
    <HomePage>
 
-   <!-- "products" -->
-   <ProductsListPage>
-    <Main>
+<!-- "products" -->
 
-   <!-- "products/:id" -->
-   <Product>
-    <Product />
+<ProductsListPage
+loader: loadProductsListPage
+
+>
+
+  <Main>
+
+<!-- "products/:id" -->
+
+<Product
+loader: loadProductPage
+
+>
+
+  <Product />
+
+<!-- add-product -->
+
+<NewProductPage
+action: addNewProduct
+
+>

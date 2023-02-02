@@ -62,6 +62,8 @@ export async function action({ request, params }) {
 
   // edit
   const productData = {
+    // new update code creator
+    code: Math.floor(Math.random() * 100),
     title: data.get("title"),
     price: data.get("price"),
     image: data.get("image"),

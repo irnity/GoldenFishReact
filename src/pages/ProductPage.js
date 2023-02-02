@@ -1,11 +1,13 @@
-import { useRouteLoaderData } from "react-router-dom"
+import { Outlet, useRouteLoaderData } from "react-router-dom"
 import Product from "../components/main/Product"
 
 function ProductPage() {
   const data = useRouteLoaderData("product-detail")
-  console.log(data)
-
-  return <Product product={data} />
+  return (
+    <>
+      <Product product={data} /> <Outlet />
+    </>
+  )
 }
 
 export default ProductPage

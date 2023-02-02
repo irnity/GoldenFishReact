@@ -11,7 +11,6 @@ import classes from "./ProductsList.module.css"
 
 function ProductsList() {
   const products = useSelector((state) => state.products.products)
-  console.log(products)
 
   return (
     <div className={classes.main_products_list}>
@@ -30,7 +29,11 @@ function ProductsList() {
             <div className={classes.product} key={product.id}>
               <div className={classes.product_image}>
                 <Link to={product.id}>
-                  <img src={product.image} alt={`${product.id}`} />
+                  <img
+                    src={product.image}
+                    alt={`${product.id}`}
+                    className={classes.image}
+                  />
                 </Link>
               </div>
 
@@ -47,4 +50,3 @@ function ProductsList() {
 }
 
 export default ProductsList
-

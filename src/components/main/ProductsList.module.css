@@ -69,6 +69,11 @@
   margin-right: 15px;
 }
 
+.image {
+  width: 150px;
+  height: 150px;
+}
+
 .product_text {
   width: 50%;
   display: flex;
