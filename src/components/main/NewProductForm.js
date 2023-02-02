@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit"
 import { Form, redirect } from "react-router-dom"
 import classes from "./NewProductForm.module.css"
 
@@ -63,7 +64,7 @@ export async function action({ request, params }) {
   // edit
   const productData = {
     // new update code creator
-    code: Math.floor(Math.random() * 100),
+    code: nanoid(),
     title: data.get("title"),
     price: data.get("price"),
     image: data.get("image"),
