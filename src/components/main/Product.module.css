@@ -19,10 +19,8 @@
 }
 
 .product_image {
-  width: 30%;
-  min-height: 50;
+  flex-grow: 2;
   border-radius: 5%;
-  /* border: 1% solid gray; */
   box-shadow: 0px 4px 7px 1px rgba(71, 71, 71, 0.274);
   background-color: white;
   display: flex;
@@ -36,6 +34,8 @@
 }
 
 .product_text {
+  flex-grow: 1;
+
   width: 60%;
   display: flex;
   align-items: flex-start;
