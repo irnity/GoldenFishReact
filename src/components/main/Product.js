@@ -23,7 +23,7 @@ function Product({ product }) {
     <div className={classes.product_box}>
       <div className={classes.product_top}>
         <div className={classes.product_image}>
-          <img src={product.image} alt="" />
+          <img src={product.image} alt="" className={classes.image} />
         </div>
 
         <div className={classes.product_text}>
@@ -47,23 +47,14 @@ function Product({ product }) {
               )}
             </div>
             <div className={classes.product_text_mid_top}>
-              <span>{product.price}грн.</span>
+              <span>Ціна: {product.price}₴</span>
             </div>
             <div className={classes.product_text_mid_top}>
               <button onClick={removeHandler}>Купити</button>
             </div>
           </div>
           <div className={classes.product_text_bottom}>
-            <div>
-              {/* <ul>
-                <li>Довжина: 3.6 м</li>
-                <li>Кількість секцій: 3 + 3</li>
-                <li>Матеріал бланка: Графит (карбон)</li>
-                <li>Дія: Швидка (Fast)</li>
-                <li>Вага: 250 г</li>
-              </ul> */}
-              {product.description}
-            </div>
+            <div>Опис: {product.description}</div>
           </div>
         </div>
       </div>
