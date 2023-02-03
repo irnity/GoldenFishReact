@@ -1,22 +1,24 @@
 // css
 import classes from "./Product.module.css"
 // router
-import { useParams } from "react-router-dom"
-// redux
-import { useDispatch } from "react-redux"
+import { useSubmit } from "react-router-dom"
+
+import { useDispatch } from "react-redux/es/exports"
 import { productsActions } from "../../store/productsSlice"
+
 import AboutBottomProduct from "./AboutBottomProduct"
 
 function Product({ product }) {
-  const params = useParams()
-  // path product id we get from ProductsList id
-  const id = params.productId
-
+  const submit = useSubmit()
   const dispatch = useDispatch()
 
-  // doesnt work now
-  const removeHandler = () => {
-    dispatch(productsActions.removeProduct(id))
+  function startDeleteHandler() {
+    const procced = window.confirm("Are you sure?")
+
+    if (procced) {
+      submit(null, { method: "delete" })
+      dispatch(productsActions.removeProduct())
+    }
   }
 
   return (
@@ -50,7 +52,8 @@ function Product({ product }) {
               <span>Ціна: {product.price}₴</span>
             </div>
             <div className={classes.product_text_mid_top}>
-              <button onClick={removeHandler}>Купити</button>
+              <button>Купити</button>
+              <button onClick={startDeleteHandler}>Видалити</button>
             </div>
           </div>
           <div className={classes.product_text_bottom}>

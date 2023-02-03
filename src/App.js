@@ -8,7 +8,10 @@ import HomePage from "./pages/HomePage"
 import ProductsListPage, {
   loader as productsListLoader,
 } from "./pages/ProductsListPage"
-import ProductPage, { loader as prooductLoader } from "./pages/ProductPage"
+import ProductPage, {
+  loader as prooductLoader,
+  action as productDelete,
+} from "./pages/ProductPage"
 import NewProductPage from "./pages/NewProductPage"
 import { action as addNewProduct } from "./components/main/NewProductForm"
 
@@ -48,6 +51,7 @@ function App() {
               id: "product-detail",
               // load
               loader: prooductLoader,
+              action: productDelete,
               element: <ProductPage />,
               children: [
                 {

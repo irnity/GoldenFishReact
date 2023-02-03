@@ -1,8 +1,16 @@
 import { nanoid } from "@reduxjs/toolkit"
 import { Form, redirect } from "react-router-dom"
+import { useDispatch } from "react-redux/es/exports"
+import { productsActions } from "../../store/productsSlice"
 import classes from "./NewProductForm.module.css"
 
 function NewProductForm({ method }) {
+  const dispatch = useDispatch()
+
+  const addProductHandler = () => {
+    dispatch(productsActions.addProduct())
+  }
+
   return (
     <Form className={classes.form} method={method}>
       {/* prevent user from post data even if he deleted required in inputs */}
@@ -47,7 +55,7 @@ function NewProductForm({ method }) {
       <div className={classes.actions}>
         {/* navigate to home */}
         <button type="button">Cancel</button>
-        <button>Submit</button>
+        <button onClick={addProductHandler}>Submit</button>
       </div>
     </Form>
   )

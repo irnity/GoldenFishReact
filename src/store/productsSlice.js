@@ -11,8 +11,13 @@ const productSlice = createSlice({
   reducers: {
     replaceProducts(state, actions) {
       // our data from fetch firebase
+
+      // if our data 
       if (state.loaded === false) {
         state.loaded = true
+        // delete data if we have one
+        state.products = []
+        // get fetch data from payload
         const data = actions.payload
         for (const key in data) {
           state.products.push({
@@ -29,33 +34,10 @@ const productSlice = createSlice({
       }
     },
     addProduct(state, actions) {
-      const newProduct = actions.payload
-      state.products.push({
-        id: Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1),
-        title: newProduct.title,
-        price: newProduct.price,
-        description: newProduct.description,
-      })
+      state.loaded = false
     },
     removeProduct(state, actions) {
-      // get product id
-      const productId = actions.payload
-      // find product with this id
-      const exisingProduct = state.products.find(
-        (product) => product.id === productId
-      )
-      // if there only 1 product deletes it
-      if (exisingProduct.quantity === 1) {
-        state.products = state.products.filter(
-          (product) => product.id !== productId
-        )
-      }
-      // if there more then 1 product in stash -1
-      else {
-        exisingProduct.inStock--
-      }
+      state.loaded = false
     },
   },
 })
