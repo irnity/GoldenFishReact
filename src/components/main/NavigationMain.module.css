@@ -2,13 +2,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  /* border: 1px solid red; */
 }
 
 .main_catalog_section {
-  padding: 4.5vh;
   margin: 15px 0 0 0;
-  width: 15vh;
+  width: 11%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +14,12 @@
   background-color: #5a616e;
   border-right: 0.01px solid black;
   border-left: 0.01px solid black;
+}
+.main_catalog_section span {
+  display: flex;
+  justify-content: center;
+  font-size: 3vh;
+  padding: 20%;
 }
 .main_catalog_section:nth-child(1) {
   border-radius: 5% 0 0 0;

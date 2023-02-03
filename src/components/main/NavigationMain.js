@@ -4,39 +4,39 @@ function NavigationMain() {
   return (
     <div className={classes.main_catalog}>
       <div className={classes.main_catalog_section}>
-        <div>Каталог</div>
+        <span>Каталог</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Спінінг</div>
+        <span>Спінінг</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Фідер</div>
+        <span>Фідер</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Короп</div>
+        <span>Короп</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Поплавок</div>
+        <span>Поплавок</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Зима</div>
+        <span>Зима</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Море</div>
+        <span>Море</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Туризм</div>
+        <span>Туризм</span>
       </div>
 
       <div className={classes.main_catalog_section}>
-        <div>Екіпірування</div>
+        <span>Екіпірування</span>
       </div>
     </div>
   )
