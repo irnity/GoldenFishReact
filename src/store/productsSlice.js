@@ -12,7 +12,7 @@ const productSlice = createSlice({
     replaceProducts(state, actions) {
       // our data from fetch firebase
 
-      // if our data 
+      // if our data
       if (state.loaded === false) {
         state.loaded = true
         // delete data if we have one
@@ -22,6 +22,7 @@ const productSlice = createSlice({
         for (const key in data) {
           state.products.push({
             id: key,
+            code: data[key].code,
             title: data[key].title,
             image: data[key].image,
             price: data[key].price,
