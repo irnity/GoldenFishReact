@@ -23,6 +23,7 @@ export async function loader() {
     const response = await fetch(
       "https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/products.json"
     )
+
     if (!response.ok) {
       throw new Error("could not fetch card data")
     }

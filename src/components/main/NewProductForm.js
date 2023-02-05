@@ -1,5 +1,5 @@
 import { nanoid } from "@reduxjs/toolkit"
-import { Form, redirect, useNavigate } from "react-router-dom"
+import { Form, Link, redirect, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux/es/exports"
 import { productsActions } from "../../store/productsSlice"
 import classes from "./NewProductForm.module.css"
@@ -22,13 +22,13 @@ function NewProductForm({ method }) {
     dispatch(productsActions.addProduct())
   }
 
-  const [code, setCode] = useState()
+  const [code, setCode] = useState("")
 
   const codeHandler = (e) => {
     setCode((prevState) => (prevState = e.target.value))
   }
 
-  // check if this code already exists
+  // check if this code of product already exists
   let finded = false
   if (products.length !== 0) {
     finded = products.filter((r) => r.code === code).length > 0
@@ -43,10 +43,14 @@ function NewProductForm({ method }) {
           id="code"
           type="text"
           name="code"
-          defaultValue={""}
+          value={code}
           onChange={codeHandler}
         />
-        {finded === true ? <span>wrong</span> : <span>fine</span>}
+        {finded === true ? (
+          <span>Product already exists</span>
+        ) : (
+          <span>It`s new product</span>
+        )}
       </p>
       <p>
         <label htmlFor="title">Title</label>
@@ -89,8 +93,18 @@ function NewProductForm({ method }) {
 
       <div className={classes.actions}>
         {/* navigate to home */}
-        <button type="button">Cancel</button>
-        <button onClick={addProductHandler}>Submit</button>
+        <Link type="button" to="/products">
+          <button>Cancel</button>
+        </Link>
+        <button
+          onClick={addProductHandler}
+          disabled={finded}
+          style={
+            finded ? { backgroundColor: "red" } : { backgroundColor: "green" }
+          }
+        >
+          Submit
+        </button>
       </div>
     </Form>
   )
