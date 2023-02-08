@@ -45,6 +45,7 @@ function App() {
               loader: productsListLoader,
               element: <ProductsListPage />,
             },
+
             {
               // product page
               path: ":productId",
@@ -67,6 +68,11 @@ function App() {
             },
           ],
         },
+        {
+          path: "hooks",
+          loader: productsListLoader,
+          element: <ProductsListPage />,
+        },
       ],
     },
   ])
@@ -75,3 +81,9 @@ function App() {
 }
 
 export default App
+
+// const productsList = {
+//   index: true,
+//   loader: productsListLoader,
+//   element: <ProductsListPage />,
+// }

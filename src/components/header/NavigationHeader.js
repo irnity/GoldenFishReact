@@ -13,12 +13,12 @@ function NavigationHeader() {
           </li>
           <li>
             <Link to="products" className={classes.header_top_info_href}>
-              Products
+              Удочки
             </Link>
           </li>
           <li>
-            <Link to="products" className={classes.header_top_info_href}>
-              Products
+            <Link to="hooks" className={classes.header_top_info_href}>
+              Гачки
             </Link>
           </li>
           <li>

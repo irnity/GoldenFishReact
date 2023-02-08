@@ -18,10 +18,15 @@ function ProductsList() {
 
 export default ProductsList
 
-export async function loader() {
+export async function loader({ request }) {
+  const url = new URL(request.url)
+  const path = url.pathname
+  // get last path name
+  // const href = url.href.split("/").pop().toString()
+  // console.log(path, href)
   const fetchData = async () => {
     const response = await fetch(
-      "https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+      `https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/${path}.json`
     )
 
     if (!response.ok) {

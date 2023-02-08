@@ -12,31 +12,29 @@ const productSlice = createSlice({
     replaceProducts(state, actions) {
       // our data from fetch firebase
 
-      // if our data
-      if (state.loaded === false) {
-        state.loaded = true
-        // delete data if we have one
-        state.products = []
-        // get fetch data from payload
-        const data = actions.payload
-        for (const key in data) {
-          state.products.push({
-            id: key,
-            code: data[key].code,
-            title: data[key].title,
-            image: data[key].image,
-            price: data[key].price,
-            description: data[key].description,
-            isStock: data[key].inStock,
-          })
-        }
-      } else {
-        return
+      // check if data is loaded
+      // delete data if we have one
+
+      state.products = []
+      // get fetch data from payload
+      const data = actions.payload
+      for (const key in data) {
+        state.products.push({
+          id: key,
+          code: data[key].code,
+          title: data[key].title,
+          image: data[key].image,
+          price: data[key].price,
+          description: data[key].description,
+          isStock: data[key].inStock,
+        })
       }
     },
+    // should delete this
     addProduct(state, actions) {
       state.loaded = false
     },
+    // should delete this
     removeProduct(state, actions) {
       state.loaded = false
     },
