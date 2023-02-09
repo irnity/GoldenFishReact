@@ -4,9 +4,18 @@ import classes from "./NavigationMain.module.css"
 
 function NavigationMain() {
   const [toggleNavigation, setToggleNavigation] = useState(false)
+  const [flade, setFlade] = useState(classes.catalog_in)
 
   const toggleNavigationHandler = () => {
-    setToggleNavigation((prevState) => !prevState)
+    if (toggleNavigation === false) {
+      setToggleNavigation((prevState) => !prevState)
+      setFlade(classes.catalog_in)
+    } else {
+      setFlade(classes.catalog_out)
+      setTimeout(() => {
+        setToggleNavigation((prevState) => !prevState)
+      }, 0.3 * 1000)
+    }
   }
 
   return (
@@ -52,10 +61,14 @@ function NavigationMain() {
         </div>
       </div>
       {toggleNavigation && (
-        <div className={classes.catalog}>
+        <div className={flade}>
           <div className={classes.catalog_link}>
             <div className={classes.catalog_link_text}>
-              <Link onClick={toggleNavigationHandler} to="/products">
+              <Link
+                onClick={toggleNavigationHandler}
+                to="/products"
+                style={{ "text-decoration": "none" }}
+              >
                 Вудилища
               </Link>
             </div>
@@ -103,7 +116,7 @@ function NavigationMain() {
           <div className={classes.catalog_link}>
             <div className={classes.catalog_link_text}>
               <Link onClick={toggleNavigationHandler} to="/">
-                Вудилища
+                <span>Вудилища</span>
               </Link>
             </div>
             <div className={classes.catalog_link_text}>
