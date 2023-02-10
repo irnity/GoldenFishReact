@@ -17,12 +17,13 @@
   user-select: none;
 }
 
-.catalog_section:hover button {
-  font-size: 5vh;
+/* need fix */
+.catalog_section:hover span {
+  color: yellow;
 }
 
-.catalog_section:active button {
-  color: aqua;
+.catalog_section:active span {
+  color: red;
 }
 
 .catalog_section span {
@@ -46,13 +47,9 @@
   border: none;
 }
 
-.catalog_section_isActive {
-  border-bottom: 2px solid rgba(155, 54, 54, 0.568);
-}
-
 .catalog_in {
   position: absolute;
-  top: 35%;
+  top: 30%;
   display: flex;
   justify-content: space-around;
   width: 90%;
@@ -100,19 +97,24 @@
 
 .catalog_link {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  margin: 15px 0;
-  width: 25%;
+  align-content: flex-start;
+  margin: 15px 15px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 .catalog_link_text {
   border: 1px solid red;
-  width: 75%;
-  height: 25%;
-  margin: 2px 0;
-  font-size: 4vh;
+  width: 10%;
+  height: 10%;
+  margin: 15px 20px;
+  font-size: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.link {
+  text-decoration: none;
 }

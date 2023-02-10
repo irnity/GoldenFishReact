@@ -23,12 +23,6 @@ import InformationPage from "./pages/productPage/InformationPage"
 import ErrorPage from "./pages/errorPage/ErrorPage"
 
 function App() {
-  // const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(fetchProductsData())
-  // }, [dispatch])
-
   const router = createBrowserRouter([
     {
       path: "/",
