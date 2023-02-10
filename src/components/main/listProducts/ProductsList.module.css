@@ -1,6 +1,6 @@
 /* main-products*/
 
-.main_products_list {
+.products_list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -12,14 +12,14 @@
 
 /* main-products-list */
 
-.main_product_list_top {
+.product_list_top {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.main_products_list_name {
+.products_list_name {
   width: 70%;
   margin: 15px;
   display: flex;
@@ -28,7 +28,7 @@
   /* border-bottom: 1px solid red; */
 }
 
-.main_products_list_name_text {
+.products_list_name_text {
   width: 100%;
   padding: 15px;
   font-size: 5vh;
@@ -39,7 +39,7 @@
 
 /* main products */
 
-.main_products_list_products {
+.products_list_products {
   width: 100%;
   display: flex;
   justify-content: flex-start;

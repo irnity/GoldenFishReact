@@ -4,13 +4,13 @@ import classes from "./CartHeader.module.css"
 
 function CartHeader({ leftSide, rightSide }) {
   return (
-    <header className={classes.header}>
+    <header className={classes.card}>
       <NavigationHeader />
 
-      <div className={classes.header_bottom}>
-        <div className={classes.header_bottom_left}>{leftSide}</div>
+      <div className={classes.card_bottom}>
+        <div className={classes.card_bottom_left}>{leftSide}</div>
 
-        <div className={classes.header_bottom_right}>{rightSide}</div>
+        <div className={classes.card_bottom_right}>{rightSide}</div>
       </div>
     </header>
   )

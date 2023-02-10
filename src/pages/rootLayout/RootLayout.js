@@ -8,8 +8,9 @@ function RootLayout() {
   return (
     <div className={classes.page}>
       <Header />
-      {/* children elements */}
+
       <Outlet />
+
       <Footer />
     </div>
   )

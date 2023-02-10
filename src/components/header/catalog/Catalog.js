@@ -20,43 +20,43 @@ function NavigationMain() {
 
   return (
     <>
-      <div className={classes.main_catalog}>
+      <div className={classes.catalog}>
         <div
-          className={classes.main_catalog_section}
+          className={classes.catalog_section}
           onClick={toggleNavigationHandler}
         >
           <button className={classes.toggle}>Каталог</button>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Спінінг</span>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Фідер</span>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Короп</span>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Поплавок</span>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Зима</span>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Море</span>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Туризм</span>
         </div>
 
-        <div className={classes.main_catalog_section}>
+        <div className={classes.catalog_section}>
           <span>Екіпірування</span>
         </div>
       </div>

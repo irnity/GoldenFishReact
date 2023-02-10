@@ -2,7 +2,7 @@ import classes from "./SearchHeader.module.css"
 
 function SearchHeader() {
   return (
-    <div className={classes.header_bottom_info}>
+    <div className={classes.search}>
       <input type="text" defaultValue="Search..." />
     </div>
   )

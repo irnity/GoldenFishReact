@@ -1,21 +1,21 @@
-.header {
+.card {
   width: 100%;
 }
 
 /* header bottom */
 
-.header_bottom {
+.card_bottom {
   display: flex;
   justify-content: space-between;
 }
 
-.header_bottom_left {
+.card_bottom_left {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.header_bottom_right {
+.card_bottom_right {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,7 +2,7 @@ import classes from "./Signup.module.css"
 
 function Signup() {
   return (
-    <div className={classes.header_bottom_signup}>
+    <div className={classes.signup}>
       <button>SignUp</button>
     </div>
   )

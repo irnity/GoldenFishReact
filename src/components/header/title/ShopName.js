@@ -1,13 +1,10 @@
 import classes from "./ShopName.module.css"
 
-
 function ShopName() {
   return (
-    <div className={classes.header_bottom_info}>
-            <span className={classes.header_bottom_info_shopName}>
-              Golden Fish
-            </span>
-          </div>
+    <div className={classes.shop}>
+      <span className={classes.shop_text}>Golden Fish</span>
+    </div>
   )
 }
 

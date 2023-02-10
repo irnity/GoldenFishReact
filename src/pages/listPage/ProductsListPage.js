@@ -10,7 +10,6 @@ function ProductsList() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(data)
     dispatch(productsActions.replaceProducts(data))
   }, [data, dispatch])
 

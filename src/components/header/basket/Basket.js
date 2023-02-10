@@ -2,7 +2,7 @@ import classes from "./Basket.module.css"
 
 function Basket() {
   return (
-    <div className={classes.header_bottom_backet}>
+    <div className={classes.backet}>
       <button>Backet</button>
     </div>
   )

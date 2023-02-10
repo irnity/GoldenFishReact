@@ -1,10 +1,10 @@
-.main_catalog {
+.catalog {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.main_catalog_section {
+.catalog_section {
   margin: 15px 0 0 0;
   width: 11%;
   display: flex;
@@ -17,25 +17,25 @@
   user-select: none;
 }
 
-.main_catalog_section:hover button {
+.catalog_section:hover button {
   font-size: 5vh;
 }
 
-.main_catalog_section:active button {
+.catalog_section:active button {
   color: aqua;
 }
 
-.main_catalog_section span {
+.catalog_section span {
   display: flex;
   justify-content: center;
   font-size: 3vh;
   padding: 20%;
 }
-.main_catalog_section:nth-child(1) {
+.catalog_section:nth-child(1) {
   border-radius: 5% 0 0 0;
   border-left: none;
 }
-.main_catalog_section:last-child {
+.catalog_section:last-child {
   border-radius: 0 5% 0 0;
   border-right: none;
 }
@@ -46,7 +46,7 @@
   border: none;
 }
 
-.main_catalog_section_isActive {
+.catalog_section_isActive {
   border-bottom: 2px solid rgba(155, 54, 54, 0.568);
 }
 

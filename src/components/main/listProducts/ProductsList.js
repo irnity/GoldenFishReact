@@ -13,17 +13,17 @@ function ProductsList() {
   const products = useSelector((state) => state.products.products)
 
   return (
-    <div className={classes.main_products_list}>
-      <div className={classes.main_product_list_top}>
-        <div className={classes.main_products_list_name}>
-          <p className={classes.main_products_list_name_text}>Назва Товару</p>
+    <div className={classes.products_list}>
+      <div className={classes.product_list_top}>
+        <div className={classes.products_list_name}>
+          <p className={classes.products_list_name_text}>Назва Товару</p>
         </div>
 
         <AddProductButton />
       </div>
 
       {console.log()}
-      <div className={classes.main_products_list_products}>
+      <div className={classes.products_list_products}>
         {products.map((product) => {
           return (
             <div className={classes.product} key={product.id}>
