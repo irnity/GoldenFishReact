@@ -3,23 +3,24 @@ import "./App.css"
 
 // Routes
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import RootLayout from "./pages/RootLayout"
-import HomePage from "./pages/HomePage"
+import RootLayout from "./pages/rootLayout/RootLayout"
+import HomePage from "./pages/homePage/HomePage"
 import ProductsListPage, {
   loader as productsListLoader,
-} from "./pages/ProductsListPage"
+} from "./pages/listPage/ProductsListPage"
 import ProductPage, {
   loader as prooductLoader,
   action as productDelete,
-} from "./pages/ProductPage"
-import NewProductPage from "./pages/NewProductPage"
-import { action as addNewProduct } from "./components/main/NewProductForm"
+} from "./pages/productPage/ProductPage"
+import NewProductPage from "./pages/addProductPage/NewProductPage"
+import { action as addNewProduct } from "./components/main/newProductForm/NewProductForm"
 
 // import { fetchProductsData } from "./store/products-actions"
 // import { useDispatch } from "react-redux"
 // import { useEffect } from "react"
-import ErrorPage from "./store/ErrorPage"
-import InformationPage from "./pages/aboutProduct/InformationPage"
+
+import InformationPage from "./pages/productPage/InformationPage"
+import ErrorPage from "./pages/errorPage/ErrorPage"
 
 function App() {
   // const dispatch = useDispatch()
@@ -37,8 +38,9 @@ function App() {
         { index: true, element: <HomePage /> },
         {
           // products page
-          path: "products",
+          path: ":category",
           errorElement: <ErrorPage />,
+
           children: [
             {
               index: true,
@@ -67,11 +69,6 @@ function App() {
               action: addNewProduct,
             },
           ],
-        },
-        {
-          path: "hooks",
-          loader: productsListLoader,
-          element: <ProductsListPage />,
         },
       ],
     },

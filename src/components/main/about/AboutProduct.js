@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import classes from "./AboutBottomProduct.module.css"
+import classes from "./AboutProduct.module.css"
 
-function AboutBottomProduct() {
+function AboutProduct() {
   return (
     <div className={classes.product_bottom}>
       <div className={classes.product_bottom_block}>
@@ -31,4 +31,4 @@ function AboutBottomProduct() {
   )
 }
 
-export default AboutBottomProduct
+export default AboutProduct

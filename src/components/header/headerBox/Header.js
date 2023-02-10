@@ -1,9 +1,9 @@
-import NavigationMain from "../main/NavigationMain"
-import Basket from "./Basket"
-import CartHeader from "./CartHeader"
-import SearchHeader from "./SearchHeader"
-import ShopName from "./ShopName"
-import Signup from "./Signup"
+import NavigationMain from "../catalog/Catalog"
+import Basket from "../basket/Basket"
+import CartHeader from "../card/CartHeader"
+import SearchHeader from "../search/SearchHeader"
+import ShopName from "../title/ShopName"
+import Signup from "../signup/Signup"
 
 function Header() {
   return (

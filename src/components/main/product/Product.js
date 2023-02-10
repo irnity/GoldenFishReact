@@ -4,9 +4,9 @@ import classes from "./Product.module.css"
 import { useSubmit } from "react-router-dom"
 
 import { useDispatch } from "react-redux/es/exports"
-import { productsActions } from "../../store/productsSlice"
+import { productsActions } from "../../../store/productsSlice"
 
-import AboutBottomProduct from "./AboutBottomProduct"
+import AboutProduct from "../about/AboutProduct"
 
 function Product({ product }) {
   const submit = useSubmit()
@@ -61,7 +61,7 @@ function Product({ product }) {
           </div>
         </div>
       </div>
-      <AboutBottomProduct product={product} />
+      <AboutProduct product={product} />
     </div>
   )
 }

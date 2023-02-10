@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 
 // route
 import { Link } from "react-router-dom"
-import AddProduct from "./AddProduct"
+import AddProductButton from "../addProductButton/AddProductButton"
 
 import classes from "./ProductsList.module.css"
 
@@ -19,7 +19,7 @@ function ProductsList() {
           <p className={classes.main_products_list_name_text}>Назва Товару</p>
         </div>
 
-        <AddProduct />
+        <AddProductButton />
       </div>
 
       {console.log()}

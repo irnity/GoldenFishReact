@@ -1,6 +1,7 @@
-import classes from "./Home.module.css"
+import React from "react"
+import classes from "./HomePage.module.css"
 
-function Home() {
+function HomePage() {
   return (
     <div className={classes.home_block}>
       <div className={classes.home_text}>Welcome to Golden Fish</div>
@@ -8,4 +9,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomePage

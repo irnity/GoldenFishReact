@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import classes from "./NavigationMain.module.css"
+import classes from "./Catalog.module.css"
 
 function NavigationMain() {
   const [toggleNavigation, setToggleNavigation] = useState(false)

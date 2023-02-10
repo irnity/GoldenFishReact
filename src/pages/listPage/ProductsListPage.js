@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom"
-import Main from "../components/main/Main"
+import Main from "../../components/main/mainBox/Main"
 
-import { productsActions } from "../store/productsSlice"
+import { productsActions } from "../../store/productsSlice"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 
@@ -10,6 +10,7 @@ function ProductsList() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(data)
     dispatch(productsActions.replaceProducts(data))
   }, [data, dispatch])
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import classes from "./AddProduct.module.css"
+import classes from "./AddProductButton.module.css"
 
-function AddProduct() {
+function AddProductButton() {
   return (
     <div className={classes.main_product_list_add}>
       <Link to={"add-product"}>
@@ -13,4 +13,4 @@ function AddProduct() {
   )
 }
 
-export default AddProduct
+export default AddProductButton

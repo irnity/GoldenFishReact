@@ -1,5 +1,5 @@
 import { json, Outlet, redirect, useRouteLoaderData } from "react-router-dom"
-import Product from "../components/main/Product"
+import Product from "../../components/main/product/Product"
 
 function ProductPage() {
   const data = useRouteLoaderData("product-detail")
@@ -12,11 +12,14 @@ function ProductPage() {
 
 export default ProductPage
 
-export async function loader({ params }) {
+export async function loader({ request, params }) {
   const id = params.productId
+  const url = new URL(request.url)
+  const categoryName = url.pathname.split("/")[1].toString()
+
   const fetchData = async () => {
     const response = await fetch(
-      `https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json`
+      `https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/${categoryName}/${id}.json`
     )
     if (!response.ok) {
       throw new Error("could not fetch card data")

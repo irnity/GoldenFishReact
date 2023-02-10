@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit"
 import { Form, Link, redirect, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux/es/exports"
-import { productsActions } from "../../store/productsSlice"
+import { productsActions } from "../../../store/productsSlice"
 import classes from "./NewProductForm.module.css"
 import { useEffect, useState } from "react"
 
