@@ -53,7 +53,7 @@
   display: flex;
   justify-content: space-around;
   width: 90%;
-  height: 90%;
+  height: 65%;
   box-shadow: 0px 0px 10px 0px black;
   background-color: white;
   animation: fadeIn 0.3s linear;
@@ -62,8 +62,11 @@
   0% {
     opacity: 0;
   }
+  25% {
+    opacity: 0.3;
+  }
   50% {
-    opacity: 0.5;
+    opacity: 0.7;
   }
   100% {
     opacity: 1;
@@ -72,14 +75,13 @@
 
 .catalog_out {
   position: absolute;
-  top: 35%;
+  top: 30%;
   display: flex;
   justify-content: space-around;
   width: 90%;
-  height: 90%;
+  height: 65%;
   box-shadow: 0px 0px 10px 0px black;
   background-color: white;
-  opacity: 0;
   animation: fadeOut 0.3s linear;
 }
 @keyframes fadeOut {
@@ -87,8 +89,12 @@
     opacity: 1;
   }
 
+  25% {
+    opacity: 0.7;
+  }
+
   50% {
-    opacity: 0.5;
+    opacity: 0.4;
   }
   100% {
     opacity: 0;
