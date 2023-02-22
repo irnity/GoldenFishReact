@@ -10,23 +10,31 @@ function NavigationMain() {
   const [list, setList] = useState([])
 
   const toggleNavigationHandler = (data) => {
-    if (list !== data) {
+    // check if list has data or its new data
+    // then update list
+    if (JSON.stringify(list) !== JSON.stringify(data)) {
       setToggleNavigation((prevState) => (prevState = true))
       setFlade(classes.catalog_in)
       setList((prevState) => (prevState = data))
       return
+      // if new data = old data then catalog will be closed
     } else {
-      setFlade(classes.catalog_out)
-      setTimeout(() => {
-        setToggleNavigation((prevState) => (prevState = false))
-        setList((prevState) => (prevState = []))
-      }, 0.3 * 1000)
+      fadeOut()
     }
+  }
+
+  function fadeOut() {
+    setFlade(classes.catalog_out)
+    setTimeout(() => {
+      setToggleNavigation((prevState) => (prevState = false))
+      setList((prevState) => (prevState = []))
+    }, 0.3 * 1000)
   }
 
   return (
     <>
       <div className={classes.catalog}>
+        {/* catalog section */}
         {information.map((data) => (
           <Cat
             toggleNavigationHandler={toggleNavigationHandler}
@@ -35,12 +43,17 @@ function NavigationMain() {
           />
         ))}
       </div>
+      {/* list one of section  */}
       {toggleNavigation && (
         <div className={flade}>
           <div className={classes.catalog_link}>
             {list.map((catalog) => (
               <div className={classes.catalog_link_text}>
-                <Link to={`/${catalog}`} className={classes.link}>
+                <Link
+                  to={`/${catalog}`}
+                  className={classes.link}
+                  onClick={fadeOut}
+                >
                   {catalog}
                 </Link>
               </div>
