@@ -15,10 +15,6 @@ import ProductPage, {
 import NewProductPage from "./pages/addProductPage/NewProductPage"
 import { action as addNewProduct } from "./components/main/newProductForm/NewProductForm"
 
-// import { fetchProductsData } from "./store/products-actions"
-// import { useDispatch } from "react-redux"
-// import { useEffect } from "react"
-
 import InformationPage from "./pages/productPage/InformationPage"
 import ErrorPage from "./pages/errorPage/ErrorPage"
 
@@ -30,11 +26,13 @@ function App() {
       children: [
         // home page
         { index: true, element: <HomePage /> },
+        // information
+        { path: "/fs", element: <p1>hello</p1> },
+        // products
         {
-          // products page
           path: ":category",
           errorElement: <ErrorPage />,
-
+          // products list page
           children: [
             {
               index: true,
@@ -46,13 +44,14 @@ function App() {
               // product page
               path: ":productId",
               id: "product-detail",
-              // load
+
               loader: prooductLoader,
               action: productDelete,
               element: <ProductPage />,
+              // info detail in product page
               children: [
                 {
-                  path: "all",
+                  path: ":productinfo",
                   element: <InformationPage />,
                 },
               ],
@@ -72,9 +71,3 @@ function App() {
 }
 
 export default App
-
-// const productsList = {
-//   index: true,
-//   loader: productsListLoader,
-//   element: <ProductsListPage />,
-// }

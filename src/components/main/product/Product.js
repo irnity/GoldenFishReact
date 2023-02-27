@@ -15,6 +15,8 @@ function Product({ product }) {
   function startDeleteHandler() {
     const procced = window.confirm("Are you sure?")
 
+    // submit delete
+    // dispath update
     if (procced) {
       submit(null, { method: "delete" })
       dispatch(productsActions.removeProduct())

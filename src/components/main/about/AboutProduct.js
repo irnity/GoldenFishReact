@@ -6,25 +6,39 @@ function AboutProduct() {
     <div className={classes.bottom}>
       <div className={classes.bottom_block}>
         <div className={classes.bottom_block_text}>
-          <Link to="all">Усе</Link>
+          <Link className={classes.link} to="info">
+            Усе
+          </Link>
         </div>
         <div className={classes.bottom_block_text}>
-          <Link to="/">Характеристики</Link>
+          <Link className={classes.link} to="characteristics">
+            Характеристики
+          </Link>
         </div>
         <div className={classes.bottom_block_text}>
-          <Link to="/">Опис</Link>
+          <Link className={classes.link} to="description">
+            Опис
+          </Link>
         </div>
         <div className={classes.bottom_block_text}>
-          <Link to="/">Аксесуари</Link>
+          <Link className={classes.link} to="additinal">
+            Аксесуари
+          </Link>
         </div>
         <div className={classes.bottom_block_text}>
-          <Link to="/">Фото та відео</Link>
+          <Link className={classes.link} to="media">
+            Фото та відео
+          </Link>
         </div>
         <div className={classes.bottom_block_text}>
-          <Link to="/">Рекомендовані товари</Link>
+          <Link className={classes.link} to="recomendation">
+            Рекомендовані товари
+          </Link>
         </div>
         <div className={classes.bottom_block_text}>
-          <Link to="/">Відгуки</Link>
+          <Link className={classes.link} to="reviews">
+            Відгуки
+          </Link>
         </div>
       </div>
     </div>
