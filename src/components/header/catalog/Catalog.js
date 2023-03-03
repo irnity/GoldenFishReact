@@ -4,7 +4,7 @@ import Cat from "./Cat"
 import classes from "./Catalog.module.css"
 import { catalogList as information } from "./Info"
 
-function NavigationMain() {
+function Catalog() {
   const [toggleNavigation, setToggleNavigation] = useState(false)
   const [flade, setFlade] = useState(classes.catalog_in)
   const [list, setList] = useState([])
@@ -65,4 +65,4 @@ function NavigationMain() {
   )
 }
 
-export default NavigationMain
+export default Catalog

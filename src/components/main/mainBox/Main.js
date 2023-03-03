@@ -1,11 +1,11 @@
 import Card from "../card/Card"
 
-import ProductsList from "../listProducts/ProductsList"
+import ListProducts from "../listProducts/ListProducts"
 
 function Main() {
   return (
     <Card>
-      <ProductsList />
+      <ListProducts />
     </Card>
   )
 }

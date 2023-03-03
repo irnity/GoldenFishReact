@@ -1,4 +1,4 @@
-import NavigationMain from "../catalog/Catalog"
+import Catalog from "../catalog/Catalog"
 import Basket from "../basket/Basket"
 import CartHeader from "../card/CartHeader"
 import SearchHeader from "../search/SearchHeader"
@@ -22,7 +22,7 @@ function Header() {
           </>
         }
       />
-      <NavigationMain />
+      <Catalog />
     </>
   )
 }

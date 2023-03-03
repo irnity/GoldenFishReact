@@ -7,9 +7,9 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import AddProductButton from "../addProductButton/AddProductButton"
 
-import classes from "./ProductsList.module.css"
+import classes from "./ListProducts.module.css"
 
-function ProductsList() {
+function ListProducts() {
   const products = useSelector((state) => state.products.products)
 
   return (
@@ -49,4 +49,4 @@ function ProductsList() {
   )
 }
 
-export default ProductsList
+export default ListProducts
