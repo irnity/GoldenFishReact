@@ -27,7 +27,7 @@ function App() {
         // home page
         { index: true, element: <HomePage /> },
         // information
-        { path: "/fs", element: <p1>hello</p1> },
+        { path: "/fs", element: <HomePage /> },
         // products
         {
           path: ":category",
