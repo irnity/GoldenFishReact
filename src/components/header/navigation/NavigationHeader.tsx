@@ -1,7 +1,10 @@
+import { FunctionComponent } from "react"
 import { Link } from "react-router-dom"
 import classes from "./NavigationHeader.module.css"
 
-function NavigationHeader() {
+interface NavigationHeaderProps {}
+
+const NavigationHeader: FunctionComponent<NavigationHeaderProps> = () => {
   return (
     <div className={classes.top}>
       <div className={classes.top_info}>

@@ -1,6 +1,11 @@
+import { FunctionComponent } from "react"
 import classes from "./Info.module.css"
 
-function Info({ title, description }) {
+interface InfoProps {
+  description: string
+}
+
+const Info: FunctionComponent<InfoProps> = ({ description }) => {
   return (
     <div className={classes.box}>
       <div className={classes.description}>

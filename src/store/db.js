@@ -22,3 +22,20 @@ state.products.push({
   description: data[key].description,
   isStock: data[key].inStock,
 })
+
+console.log(
+  "key",
+  typeof key,
+  "code",
+  typeof data[key].code,
+  "title",
+  typeof data[key].title,
+  "image",
+  typeof data[key].image,
+  "price",
+  typeof data[key].price,
+  "description",
+  typeof data[key].description,
+  "inStock",
+  typeof data[key].inStock
+)

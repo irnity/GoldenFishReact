@@ -4,8 +4,11 @@ import CartHeader from "../card/CartHeader"
 import SearchHeader from "../search/SearchHeader"
 import ShopName from "../title/ShopName"
 import Signup from "../signup/Signup"
+import { FunctionComponent } from "react"
 
-function Header() {
+interface HeaderProps {}
+
+const Header: FunctionComponent<HeaderProps> = () => {
   return (
     <>
       <CartHeader

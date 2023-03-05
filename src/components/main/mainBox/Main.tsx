@@ -1,8 +1,11 @@
+import { FunctionComponent } from "react"
 import Card from "../card/Card"
 
 import ListProducts from "../listProducts/ListProducts"
 
-function Main() {
+interface MainProps {}
+
+const Main: FunctionComponent<MainProps> = () => {
   return (
     <Card>
       <ListProducts />

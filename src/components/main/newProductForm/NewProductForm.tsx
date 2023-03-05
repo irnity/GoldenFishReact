@@ -1,12 +1,23 @@
 import { nanoid } from "@reduxjs/toolkit"
-import { Form, Link, redirect, useNavigate } from "react-router-dom"
+import { Form, FormMethod, Link, redirect, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux/es/exports"
 import { productsActions } from "../../../store/productsSlice"
 import classes from "./NewProductForm.module.css"
-import { useEffect, useState } from "react"
+import { FunctionComponent, useEffect, useState } from "react"
 
-function NewProductForm({ method }) {
-  const products = useSelector((state) => state.products.products)
+interface NewProductFormProps {
+  method: FormMethod
+}
+
+const NewProductForm: FunctionComponent<NewProductFormProps> = ({ method }) => {
+  // add type state
+  const products = useSelector((state: any) => state.products.products) as {
+    description: string
+    title: string
+    image: string
+    price: number
+    code: string
+  }[]
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -24,7 +35,7 @@ function NewProductForm({ method }) {
 
   const [code, setCode] = useState("")
 
-  const codeHandler = (e) => {
+  const codeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCode((prevState) => (prevState = e.target.value))
   }
 
@@ -85,7 +96,7 @@ function NewProductForm({ method }) {
         <textarea
           id="description"
           name="description"
-          rows="5"
+          rows={5}
           required
           defaultValue={""}
         />
@@ -112,7 +123,7 @@ function NewProductForm({ method }) {
 
 export default NewProductForm
 
-export async function action({ request, params }) {
+export async function action({ request, params }: any) {
   // get method from form above
   const method = request.method
   // get data from product form page

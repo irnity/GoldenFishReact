@@ -1,6 +1,9 @@
+import { FunctionComponent } from "react"
 import classes from "./Basket.module.css"
 
-function Basket() {
+interface BasketProps {}
+
+const Basket: FunctionComponent<BasketProps> = () => {
   return (
     <div className={classes.backet}>
       <button>Backet</button>

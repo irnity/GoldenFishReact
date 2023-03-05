@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { ProductSliceProps } from "./model"
 
-const initialProductsState = {
+const initialProductsState: ProductSliceProps = {
   products: [],
   loaded: false,
 }
@@ -31,7 +32,7 @@ const productSlice = createSlice({
       }
     },
     // should delete this
-    addProduct(state, actions) {
+    addProduct(state) {
       state.loaded = false
     },
     // should delete this

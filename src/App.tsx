@@ -9,7 +9,7 @@ import ProductsListPage, {
   loader as productsListLoader,
 } from "./pages/listPage/ProductsListPage"
 import ProductPage, {
-  loader as prooductLoader,
+  loader as productLoader,
   action as productDelete,
 } from "./pages/productPage/ProductPage"
 import NewProductPage from "./pages/addProductPage/NewProductPage"
@@ -44,8 +44,7 @@ function App() {
               // product page
               path: ":productId",
               id: "product-detail",
-
-              loader: prooductLoader,
+              loader: productLoader,
               action: productDelete,
               element: <ProductPage />,
               // info detail in product page

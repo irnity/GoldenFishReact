@@ -7,32 +7,33 @@ import Additinal from "../../components/main/about/info/Additinal"
 import Media from "../../components/main/about/info/Media"
 import Recomendation from "../../components/main/about/info/Recomendation"
 import Reviews from "../../components/main/about/info/Reviews"
+import { FunctionComponent } from "react"
 
-function InformationPage() {
-  // get info by product id loader
-  const product = useRouteLoaderData("product-detail")
+interface InformationPAgeProps {}
+
+const InformationPAge: FunctionComponent<InformationPAgeProps> = () => {
+  const product = useRouteLoaderData("product-detail") as {
+    description: string
+    title: string
+    image: string
+    price: number
+    code: string
+  }
 
   const params = useParams()
 
   let info = null
   switch (params.productinfo) {
     case "info":
-      info = (
-        <Info title={params.productinfo} description={product.description} />
-      )
+      info = <Info description={product.description} />
       break
 
     case "characteristics":
-      info = <Characteristics title={params.productinfo} product={product} />
+      info = <Characteristics />
       break
 
     case "description":
-      info = (
-        <Description
-          title={params.productinfo}
-          description={product.description}
-        />
-      )
+      info = <Description description={product.description} />
       break
 
     case "additinal":
@@ -58,4 +59,4 @@ function InformationPage() {
   return <div className={classes.box}>{info}</div>
 }
 
-export default InformationPage
+export default InformationPAge

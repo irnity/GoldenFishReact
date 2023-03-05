@@ -89,3 +89,27 @@ function insertAtBegginning<T>(array: T[], value: T) {
 const demoArray = [1, 2, 3]
 
 const updateArray = insertAtBegginning(demoArray, -1) // [-1, 1, 2, 3]
+
+// for props
+const Todos: React.FC<{ items: todo[] }> = (props) => {
+
+// for props function
+const NewTodo: React.FC<{ onAddTodo: (value: string) => void }> = (props) => {
+
+// for state
+const [todos, setTodos] = useState<Todo[]>([])
+
+// for input
+const todoTextInputRef = useRef<HTMLInputElement>()
+
+// for changeHandler
+const changeHandler = (event: React.KeyboardEvent<HTMLInputElement>)
+<input type="text" value={value} onChange={changeHandler}/>
+
+// for form event
+const sumbitHandler = (event: React.FormEvent)
+
+// for props children
+interface PropsChildren {
+  children: React.ReactNode
+}

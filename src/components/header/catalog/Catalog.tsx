@@ -1,15 +1,17 @@
-import { useState } from "react"
+import { useState, FunctionComponent } from "react"
 import { Link } from "react-router-dom"
-import Cat from "./Cat"
+import CatalogList from "./CatalogList"
 import classes from "./Catalog.module.css"
 import { catalogList as information } from "./Info"
 
-function Catalog() {
+interface CatalogProps {}
+
+const Catalog: FunctionComponent<CatalogProps> = () => {
   const [toggleNavigation, setToggleNavigation] = useState(false)
   const [flade, setFlade] = useState(classes.catalog_in)
-  const [list, setList] = useState([])
+  const [list, setList] = useState<string[]>([])
 
-  const toggleNavigationHandler = (data) => {
+  const toggleNavigationHandler = (data: string[]) => {
     // check if list has data or its new data
     // then update list
     if (JSON.stringify(list) !== JSON.stringify(data)) {
@@ -36,7 +38,8 @@ function Catalog() {
       <div className={classes.catalog}>
         {/* catalog section */}
         {information.map((data) => (
-          <Cat
+          <CatalogList
+            key={data.name}
             toggleNavigationHandler={toggleNavigationHandler}
             title={data.name}
             catalog={data.catalog}
@@ -47,8 +50,9 @@ function Catalog() {
       {toggleNavigation && (
         <div className={flade}>
           <div className={classes.catalog_link}>
-            {list.map((catalog) => (
-              <div className={classes.catalog_link_text}>
+            {/* need keys for catalog */}
+            {list.map((catalog, index) => (
+              <div className={classes.catalog_link_text} key={index}>
                 <Link
                   to={`/${catalog}`}
                   className={classes.link}

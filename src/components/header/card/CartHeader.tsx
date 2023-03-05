@@ -1,8 +1,16 @@
-import React from "react"
+import { FunctionComponent } from "react"
 import NavigationHeader from "../navigation/NavigationHeader"
 import classes from "./CartHeader.module.css"
 
-function CartHeader({ leftSide, rightSide }) {
+interface CartHeaderProps {
+  leftSide: React.ReactNode
+  rightSide: React.ReactNode
+}
+
+const CartHeader: FunctionComponent<CartHeaderProps> = ({
+  leftSide,
+  rightSide,
+}) => {
   return (
     <header className={classes.card}>
       <NavigationHeader />

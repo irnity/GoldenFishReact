@@ -1,7 +1,9 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import classes from "./Characteristics.module.css"
 
-function Characteristics({ product }) {
+interface CharacteristicsProps {}
+
+const Characteristics: FunctionComponent<CharacteristicsProps> = () => {
   return (
     <div className={classes.characteristics}>
       <div className={classes.name}>

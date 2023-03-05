@@ -18,7 +18,8 @@ function ProductsList() {
 
 export default ProductsList
 
-export async function loader({ request }) {
+// need fix types
+export async function loader({ request }: any) {
   const url = new URL(request.url)
   const path = url.pathname
   // get last path name

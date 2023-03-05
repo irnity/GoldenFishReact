@@ -1,7 +1,10 @@
+import { FunctionComponent } from "react"
 import { Link } from "react-router-dom"
 import classes from "./AboutProduct.module.css"
 
-function AboutProduct() {
+interface AboutProductProps {}
+
+const AboutProduct: FunctionComponent<AboutProductProps> = () => {
   return (
     <div className={classes.bottom}>
       <div className={classes.bottom_block}>
