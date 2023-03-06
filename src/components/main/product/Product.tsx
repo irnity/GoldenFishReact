@@ -1,14 +1,31 @@
 // css
 import classes from "./Product.module.css"
+
 // router
 import { useSubmit } from "react-router-dom"
 
+// Redux
 import { useDispatch } from "react-redux/es/exports"
 import { productsActions } from "../../../store/productsSlice"
 
+// Components
 import AboutProduct from "../about/AboutProduct"
 
-function Product({ product }) {
+// TS
+import { FunctionComponent } from "react"
+
+interface ProductProps {
+  product: {
+    description: string
+    title: string
+    image: string
+    price: number
+    code: string
+    inStock: string
+  }
+}
+
+const Product: FunctionComponent<ProductProps> = ({ product }) => {
   const submit = useSubmit()
   const dispatch = useDispatch()
 
@@ -44,7 +61,7 @@ function Product({ product }) {
           <div className={classes.product_text_mid}>
             <div className={classes.product_text_mid_top}>
               {/* check if in stock */}
-              {product.inStock >= 1 ? (
+              {product.inStock >= "1" ? (
                 <span>В наявності</span>
               ) : (
                 <span>Немає в наявності</span>
@@ -63,7 +80,7 @@ function Product({ product }) {
           </div>
         </div>
       </div>
-      <AboutProduct product={product} />
+      <AboutProduct />
     </div>
   )
 }

@@ -123,11 +123,19 @@ const NewProductForm: FunctionComponent<NewProductFormProps> = ({ method }) => {
 
 export default NewProductForm
 
-export async function action({ request, params }: any) {
+interface request {
+  request: { method: string; formData: () => {} }
+}
+
+// need maybe some fixes with TS
+export async function action({ request }: request) {
   // get method from form above
   const method = request.method
+
   // get data from product form page
-  const data = await request.formData()
+  const data = (await request.formData()) as {
+    get: (value: string) => string
+  }
 
   // edit
   const productData = {

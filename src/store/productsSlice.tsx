@@ -36,7 +36,7 @@ const productSlice = createSlice({
       state.loaded = false
     },
     // should delete this
-    removeProduct(state, actions) {
+    removeProduct(state) {
       state.loaded = false
     },
   },

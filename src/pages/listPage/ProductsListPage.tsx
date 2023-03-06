@@ -3,9 +3,11 @@ import Main from "../../components/main/mainBox/Main"
 
 import { productsActions } from "../../store/productsSlice"
 import { useDispatch } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, FunctionComponent } from "react"
 
-function ProductsList() {
+interface ProductsListProps {}
+
+const ProductsList: FunctionComponent<ProductsListProps> = () => {
   const data = useLoaderData()
   const dispatch = useDispatch()
 
@@ -18,8 +20,14 @@ function ProductsList() {
 
 export default ProductsList
 
+interface request {
+  request: {
+    url: string
+  }
+}
+
 // need fix types
-export async function loader({ request }: any) {
+export async function loader({ request }: request) {
   const url = new URL(request.url)
   const path = url.pathname
   // get last path name

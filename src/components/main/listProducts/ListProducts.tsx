@@ -1,4 +1,5 @@
 // react
+import { FunctionComponent } from "react"
 
 // redux
 import { useSelector } from "react-redux"
@@ -9,8 +10,14 @@ import AddProductButton from "../addProductButton/AddProductButton"
 
 import classes from "./ListProducts.module.css"
 
-function ListProducts() {
-  const products = useSelector((state) => state.products.products)
+import { ProductSliceProps } from "../../../store/model"
+
+interface ListProductsProps {}
+
+const ListProducts: FunctionComponent<ListProductsProps> = () => {
+  const products = useSelector(
+    (state: { products: ProductSliceProps }) => state.products.products
+  )
 
   return (
     <div className={classes.products_list}>
@@ -22,7 +29,6 @@ function ListProducts() {
         <AddProductButton />
       </div>
 
-      {console.log()}
       <div className={classes.products_list_products}>
         {products.map((product) => {
           return (

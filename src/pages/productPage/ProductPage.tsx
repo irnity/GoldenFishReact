@@ -11,6 +11,7 @@ const ProductPage: FunctionComponent<ProductPageProps> = () => {
     image: string
     price: number
     code: string
+    inStock: string
   }
   return (
     <>
@@ -21,15 +22,21 @@ const ProductPage: FunctionComponent<ProductPageProps> = () => {
 
 export default ProductPage
 
-// need add types
+interface request {
+  url: string | URL
+  method: string
+}
+interface params {
+  productId?: any
+}
 
-export async function loader({ request, params }: any) {
-  console.log(
-    request.url,
-    typeof request.url,
-    params.productId,
-    typeof params.productId
-  )
+export async function loader({
+  request,
+  params,
+}: {
+  request: request
+  params: params
+}) {
   const id = params.productId
   const url = new URL(request.url)
   const categoryName = url.pathname.split("/")[1].toString()
@@ -52,9 +59,14 @@ export async function loader({ request, params }: any) {
   }
 }
 
-// need add types
 // delete product
-export async function action({ request, params }: any) {
+export async function action({
+  request,
+  params,
+}: {
+  request: request
+  params: params
+}) {
   const productId = params.productId
   const response = await fetch(
     `https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/products/${productId}.json`,
