@@ -60,7 +60,7 @@
 }
 
 .catalog_in {
-  animation: fadeIn 0.4s ease-out forwards;
+  animation: fadeIn 0.3s ease-out forwards;
 }
 @keyframes fadeIn {
   0% {
@@ -77,9 +77,19 @@
     transform: translateY(0%);
   }
 }
+.fade_slide_enter {
+}
+.fade_slide_enter_active {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+.fade_slide_exit {
+}
+.fade_slide_exit_active {
+  animation: fadeOut 0.3s ease-out forwards;
+}
 
 .catalog_out {
-  animation: fadeOut 1s ease-out forwards;
+  animation: fadeOut 0.3s ease-out forwards;
 }
 @keyframes fadeOut {
   0% {

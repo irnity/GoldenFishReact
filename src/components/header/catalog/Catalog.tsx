@@ -2,15 +2,15 @@ import { useState, FunctionComponent } from "react"
 import { Link } from "react-router-dom"
 import CatalogList from "./CatalogList"
 import classes from "./Catalog.module.css"
-import { Transition } from "react-transition-group"
+import { CSSTransition } from "react-transition-group"
 
 import { catalogList as information } from "./Info"
 
 interface CatalogProps {}
 
 const animationTiming = {
-  enter: 400,
-  exit: 1000,
+  enter: 300,
+  exit: 300,
 }
 
 const Catalog: FunctionComponent<CatalogProps> = () => {
@@ -49,47 +49,35 @@ const Catalog: FunctionComponent<CatalogProps> = () => {
         ))}
       </div>
       {/* list one of section  */}
-      <Transition
+      <CSSTransition
         in={toggleNavigation}
         timeout={animationTiming}
         mountOnEnter
         unmountOnExit
-        onEnter={() => console.log("onEnter")}
-        onEntering={() => console.log("onEntering")}
-        onEntered={() => console.log("onEntered")}
-        onExit={() => console.log("onExit")}
-        onExiting={() => console.log("onExiting")}
-        onExited={() => console.log("onExited")}
-      >
-        {(state) => {
-          const cssClasses = [
-            classes.catalog_block,
-            state === "entering"
-              ? classes.catalog_in
-              : state === "exiting"
-              ? classes.catalog_out
-              : null,
-          ]
-          return (
-            <div className={cssClasses.join(" ")}>
-              <div className={classes.catalog_link}>
-                {/* need keys for catalog */}
-                {list.map((catalog, index) => (
-                  <div className={classes.catalog_link_text} key={index}>
-                    <Link
-                      to={`/${catalog}`}
-                      className={classes.link}
-                      onClick={fadeOut}
-                    >
-                      {catalog}
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )
+        classNames={{
+          enter: classes.fade_slide_enter,
+          enterActive: classes.fade_slide_enter_active,
+          exit: classes.fade_slide_exit,
+          exitActive: classes.fade_slide_exit_active,
         }}
-      </Transition>
+      >
+        <div className={classes.catalog_block}>
+          <div className={classes.catalog_link}>
+            {/* need keys for catalog */}
+            {list.map((catalog, index) => (
+              <div className={classes.catalog_link_text} key={index}>
+                <Link
+                  to={`/${catalog}`}
+                  className={classes.link}
+                  onClick={fadeOut}
+                >
+                  {catalog}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </CSSTransition>
     </>
   )
 }
