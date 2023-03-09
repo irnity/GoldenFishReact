@@ -10,3 +10,12 @@ export interface ProductSliceProps {
   }[]
   loaded: boolean
 }
+
+export interface BasketSliceProps {
+  code: string
+  description: string
+  image: string
+  amountToBuy: number
+  price: number
+  title: string
+}
