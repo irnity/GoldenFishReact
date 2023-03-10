@@ -7,6 +7,7 @@ import { useSubmit } from "react-router-dom"
 // Redux
 import { useDispatch } from "react-redux/es/exports"
 import { productsActions } from "../../../store/productsSlice"
+import { basketActions } from "../../../store/basketSlice"
 
 // Components
 import AboutProduct from "../about/AboutProduct"
@@ -40,6 +41,10 @@ const Product: FunctionComponent<ProductProps> = ({ product }) => {
     }
   }
 
+  const addProductToBasket = () => {
+    dispatch(basketActions.addToBasket(product))
+  }
+
   return (
     <div className={classes.product_box}>
       <div className={classes.product_top}>
@@ -71,7 +76,7 @@ const Product: FunctionComponent<ProductProps> = ({ product }) => {
               <span>Ціна: {product.price}₴</span>
             </div>
             <div className={classes.product_text_mid_top}>
-              <button>Купити</button>
+              <button onClick={addProductToBasket}>Додати В кошик</button>
               <button onClick={startDeleteHandler}>Видалити</button>
             </div>
           </div>

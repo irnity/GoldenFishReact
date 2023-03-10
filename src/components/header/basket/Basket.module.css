@@ -15,11 +15,11 @@
 
 .modal {
   background-color: white;
-  position: fixed;
+  position: absolute;
   top: 10%;
   left: 25%;
   width: 50%;
-  height: 70%;
+  /* min-height: 70%; */
   z-index: 100;
   overflow: hidden;
   display: flex;

@@ -12,10 +12,14 @@ export interface ProductSliceProps {
 }
 
 export interface BasketSliceProps {
-  code: string
-  description: string
-  image: string
-  amountToBuy: number
-  price: number
-  title: string
+  basket: {
+    code: string
+    description: string
+    image: string
+    amountToBuy: number
+    piecePrice: number
+    totalPrice: number
+    title: string
+  }[]
+  totalPrice: number
 }
