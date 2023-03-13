@@ -45,8 +45,8 @@ const NavigationHeader: FunctionComponent<NavigationHeaderProps> = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className={classes.top_info_href}>
-              Допомога
+            <Link to="/order" className={classes.top_info_href}>
+              Order
             </Link>
           </li>
         </ul>

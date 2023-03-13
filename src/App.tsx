@@ -17,6 +17,7 @@ import { action as addNewProduct } from "./components/main/newProductForm/NewPro
 
 import InformationPage from "./pages/productPage/InformationPage"
 import ErrorPage from "./pages/errorPage/ErrorPage"
+import OrderPage from "./pages/orderPage/orderPage"
 
 function App() {
   const router = createBrowserRouter([
@@ -28,6 +29,7 @@ function App() {
         { index: true, element: <HomePage /> },
         // information
         { path: "/fs", element: <HomePage /> },
+        { path: "order", element: <OrderPage /> },
         // products
         {
           path: ":category",

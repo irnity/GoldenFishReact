@@ -3,6 +3,8 @@ import React, { FunctionComponent } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { BasketSliceProps } from "../../../store/model"
 import { basketActions } from "../../../store/basketSlice"
+import { Link } from "react-router-dom"
+import Order from "../../order/Order"
 
 interface ModalOverlayProps {
   onConfirm: () => void
@@ -20,41 +22,13 @@ const ModalOverlay: FunctionComponent<ModalOverlayProps> = () => {
   const clearBasketHandler = () => {
     dispatch(basketActions.clearBasket())
   }
-  const createOrder = () => {
-    dispatch(basketActions.createOrder())
-  }
-  // console.log(basket)
   return (
     <div className={classes.modal}>
       <div className={classes.box}>
         <div className={classes.header}>ВИ ДОДАЛИ ТОВАР У КОШИК</div>
 
         <div className={classes.main}>
-          <ul>
-            {basket.map((product) => (
-              <li className={classes.list_item} key={product.code}>
-                <div className={classes.item}>
-                  <div>
-                    <img
-                      src={product.image}
-                      width={100}
-                      height={100}
-                      alt="ваш товар"
-                    />
-                  </div>
-                  <div className={classes.info}>
-                    <div>{product.title}</div>
-                    <div className={classes.info_value}>
-                      <button>+</button>
-                      <span>{product.amountToBuy}</span>
-                      <button>-</button>
-                      <span>Ціна: {product.totalPrice}</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <Order basket={basket} />
         </div>
 
         <div className={classes.footer}>
@@ -64,7 +38,9 @@ const ModalOverlay: FunctionComponent<ModalOverlayProps> = () => {
           <div className={classes.footer_continue}>
             <button>Продовжити покупки</button>
             <button onClick={clearBasketHandler}>Очистити корзину</button>
-            <button onClick={createOrder}>Оформити</button>
+            <Link to="/order">
+              <button>Оформити</button>
+            </Link>
           </div>
         </div>
       </div>

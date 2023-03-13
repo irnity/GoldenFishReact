@@ -42,43 +42,14 @@
 }
 
 .main {
+  width: 90%;
   margin: 15px 0;
-  font-size: larger;
-  font-weight: 600;
-}
-.list_item {
-  border: 2px wheat solid;
-  border-radius: 5px;
-  width: 100%;
-  margin: 5px 0;
-}
-.item {
-  margin: 15px 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.info {
-  /* width: 90%; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-.info_value {
-  margin-bottom: 15px;
-}
-.info_value button,
-input,
-span {
-  margin: 0 10px;
-  padding: 5px;
+  border: 1px solid red;
 }
 
 .footer {
   width: 84%;
   display: flex;
-
   align-items: flex-start;
   flex-direction: column;
 }
