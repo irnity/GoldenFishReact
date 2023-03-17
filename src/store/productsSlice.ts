@@ -19,15 +19,19 @@ const productSlice = createSlice({
       state.products = []
       // get fetch data from payload
       const data = actions.payload
-      for (const key in data) {
+
+      const item = data.map((a: any) => a[0])
+      const id = data.map((a: any) => a[1])
+
+      for (const key in item) {
         state.products.push({
-          id: key,
-          code: data[key].code,
-          title: data[key].title,
-          image: data[key].image,
-          price: data[key].price,
-          description: data[key].description,
-          isStock: data[key].inStock,
+          id: id[key],
+          code: item[key].code,
+          title: item[key].title,
+          image: item[key].image,
+          price: item[key].price,
+          description: item[key].description,
+          isStock: item[key].inStock,
         })
       }
     },

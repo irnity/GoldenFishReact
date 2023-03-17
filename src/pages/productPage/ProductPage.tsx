@@ -1,6 +1,8 @@
+import { collection, doc, getDoc } from "firebase/firestore"
 import { FunctionComponent } from "react"
 import { json, Outlet, redirect, useRouteLoaderData } from "react-router-dom"
 import Product from "../../components/main/product/Product"
+import { db } from "../../config/firebase"
 
 interface ProductPageProps {}
 
@@ -40,22 +42,16 @@ export async function loader({
   const id = params.productId
   const url = new URL(request.url)
   const categoryName = url.pathname.split("/")[1].toString()
-
-  const fetchData = async () => {
-    const response = await fetch(
-      `https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/${categoryName}/${id}.json`
-    )
-    if (!response.ok) {
-      throw new Error("could not fetch card data")
-    }
-    const data = await response.json()
-    return data
-  }
   try {
-    const productData = await fetchData()
-    return productData
-  } catch (error) {
-    console.log(error)
+    // get one doc
+    const productsCollectionRef = doc(db, `${categoryName}`, `${id}`)
+    // doc
+    const data = await getDoc(productsCollectionRef)
+    // doc to data
+    const filteredData = data.data()
+    return filteredData
+  } catch (err) {
+    console.error(err)
   }
 }
 

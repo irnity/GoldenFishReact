@@ -5,6 +5,9 @@ import { productsActions } from "../../store/productsSlice"
 import { useDispatch } from "react-redux"
 import { useEffect, FunctionComponent } from "react"
 
+import { db } from "../../config/firebase"
+import { getDocs, doc, collection } from "firebase/firestore"
+
 interface ProductsListProps {}
 
 const ProductsList: FunctionComponent<ProductsListProps> = () => {
@@ -30,24 +33,22 @@ interface request {
 export async function loader({ request }: request) {
   const url = new URL(request.url)
   const path = url.pathname
-  // get last path name
-  // const href = url.href.split("/").pop().toString()
-  // console.log(path, href)
-  const fetchData = async () => {
-    const response = await fetch(
-      `https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/${path}.json`
-    )
 
-    if (!response.ok) {
-      throw new Error("could not fetch card data")
-    }
-    const data = await response.json()
-    return data
-  }
   try {
-    const productData = await fetchData()
-    return productData
-  } catch (error) {
-    console.log(error)
+    // get collection
+    const productsCollectionRef = collection(db, `${path}`)
+
+    // get docs
+    const data = await getDocs(productsCollectionRef)
+    
+    // docs to data 
+    const filteredData = data.docs.map((doc) => {
+      return [doc.data(), doc.id]
+    })
+    console.log(filteredData)
+
+    return filteredData
+  } catch (err) {
+    console.error(err)
   }
 }

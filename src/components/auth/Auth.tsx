@@ -7,6 +7,8 @@ import {
   signOut,
 } from "firebase/auth"
 
+
+
 interface AuthProps {}
 
 const Auth: FunctionComponent<AuthProps> = () => {

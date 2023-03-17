@@ -20,6 +20,7 @@ import ErrorPage from "./pages/errorPage/ErrorPage"
 import OrderPage from "./pages/orderPage/orderPage"
 import Auth from "./components/auth/Auth"
 
+
 function App() {
   const router = createBrowserRouter([
     {
