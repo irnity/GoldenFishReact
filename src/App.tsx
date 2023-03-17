@@ -18,6 +18,7 @@ import { action as addNewProduct } from "./components/main/newProductForm/NewPro
 import InformationPage from "./pages/productPage/InformationPage"
 import ErrorPage from "./pages/errorPage/ErrorPage"
 import OrderPage from "./pages/orderPage/orderPage"
+import Auth from "./components/auth/Auth"
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +30,7 @@ function App() {
         { index: true, element: <HomePage /> },
         // information
         { path: "/fs", element: <HomePage /> },
+        { path: "auth", element: <Auth /> },
         { path: "order", element: <OrderPage /> },
         // products
         {

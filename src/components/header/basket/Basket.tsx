@@ -5,7 +5,7 @@ import classes from "./Basket.module.css"
 interface BasketProps {}
 
 const Basket: FunctionComponent<BasketProps> = () => {
-  const [toggleOverlay, setToggleOverlay] = useState(false)
+  const [toggleOverlay, setToggleOverlay] = useState(true)
 
   const toggleHandler = () => {
     setToggleOverlay((prevState) => !prevState)
