@@ -1,4 +1,4 @@
-import { collection, doc, getDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDoc } from "firebase/firestore"
 import { FunctionComponent } from "react"
 import { json, Outlet, redirect, useRouteLoaderData } from "react-router-dom"
 import Product from "../../components/main/product/Product"
@@ -43,12 +43,15 @@ export async function loader({
   const url = new URL(request.url)
   const categoryName = url.pathname.split("/")[1].toString()
   try {
-    // get one doc
+    // path to document
     const productsCollectionRef = doc(db, `${categoryName}`, `${id}`)
-    // doc
+
+    // get document
     const data = await getDoc(productsCollectionRef)
-    // doc to data
+
+    // document to data
     const filteredData = data.data()
+
     return filteredData
   } catch (err) {
     console.error(err)
@@ -63,23 +66,17 @@ export async function action({
   request: request
   params: params
 }) {
-  const productId = params.productId
-  const response = await fetch(
-    `https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/products/${productId}.json`,
-    {
-      // method we get from productItem submit()
-      method: request.method,
-    }
-  )
+  const id = params.productId
+  const url = new URL(request.url)
+  const categoryName = url.pathname.split("/")[1].toString()
 
-  if (!response.ok) {
-    throw json(
-      { message: "Could not delete event." },
-      {
-        status: 500,
-      }
-    )
-  } else {
-    return redirect("/products")
+  const productsCollectionRef = doc(db, `${categoryName}`, `${id}`)
+
+  try {
+    await deleteDoc(productsCollectionRef)
+  } catch (err) {
+    console.error(err)
   }
+
+  return redirect("/products")
 }

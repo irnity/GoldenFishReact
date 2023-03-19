@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux/es/exports"
 import { productsActions } from "../../../store/productsSlice"
 import classes from "./NewProductForm.module.css"
 import { FunctionComponent, useEffect, useState } from "react"
+import { addDoc, collection } from "firebase/firestore"
+import { auth, db } from "../../../config/firebase"
 
 interface NewProductFormProps {
   method: FormMethod
@@ -47,6 +49,16 @@ const NewProductForm: FunctionComponent<NewProductFormProps> = ({ method }) => {
 
   return (
     <Form className={classes.form} method={method}>
+      <p>
+        <label htmlFor="category">Category</label>
+        <input
+          id="category"
+          type="text"
+          name="category"
+          required
+          placeholder={"products"}
+        />
+      </p>
       {/* prevent user from post data even if he deleted required in inputs */}
       <p>
         <label htmlFor="code">Code</label>
@@ -124,43 +136,33 @@ const NewProductForm: FunctionComponent<NewProductFormProps> = ({ method }) => {
 export default NewProductForm
 
 interface request {
-  request: { method: string; formData: () => {} }
+  request: { formData: () => {} }
 }
 
 // need maybe some fixes with TS
 export async function action({ request }: request) {
-  // get method from form above
-  const method = request.method
-
   // get data from product form page
   const data = (await request.formData()) as {
     get: (value: string) => string
   }
+
+  const productsCollectionRef = collection(db, `${data.get("category")}`)
 
   // edit
   const productData = {
     // new update code creator
     code: data.get("code") || nanoid(),
     title: data.get("title"),
-    price: data.get("price"),
+    price: parseInt(data.get("price")),
     image: data.get("image"),
     description: data.get("description"),
-    inStock: data.get("inStock"),
+    inStock: parseInt(data.get("inStock")),
+    userId: auth.currentUser?.uid,
   }
-
-  // if we create newEvent
-  let url =
-    "https://goldenfishreact-default-rtdb.europe-west1.firebasedatabase.app/products.json"
-
-  const response = await fetch(url, {
-    method: method,
-    body: JSON.stringify(productData),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  if (!response.ok) {
-    throw new Error("Sending product data failed")
+  try {
+    await addDoc(productsCollectionRef, productData)
+  } catch (err) {
+    console.error(err)
   }
 
   return redirect("/products")

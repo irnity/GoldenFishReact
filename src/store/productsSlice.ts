@@ -6,6 +6,16 @@ const initialProductsState: ProductSliceProps = {
   loaded: false,
 }
 
+interface Product {
+  id: string
+  code: string
+  title: string
+  image: string
+  price: number
+  description: string
+  inStock: number
+}
+
 const productSlice = createSlice({
   name: "Products",
   initialState: initialProductsState,
@@ -19,21 +29,17 @@ const productSlice = createSlice({
       state.products = []
       // get fetch data from payload
       const data = actions.payload
+      // console.log(data)
 
-      const item = data.map((a: any) => a[0])
-      const id = data.map((a: any) => a[1])
-
-      for (const key in item) {
-        state.products.push({
-          id: id[key],
-          code: item[key].code,
-          title: item[key].title,
-          image: item[key].image,
-          price: item[key].price,
-          description: item[key].description,
-          isStock: item[key].inStock,
-        })
-      }
+      state.products = data.map((product: Product) => ({
+        id: product.id,
+        code: product.code,
+        title: product.title,
+        image: product.image,
+        price: product.price,
+        description: product.description,
+        isStock: product.inStock,
+      }))
     },
     // should delete this
     addProduct(state) {

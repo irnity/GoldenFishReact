@@ -3,11 +3,10 @@ import { FunctionComponent, useState } from "react"
 import { auth, googleProvider } from "../../config/firebase"
 import {
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth"
-
-
 
 interface AuthProps {}
 
@@ -27,7 +26,8 @@ const Auth: FunctionComponent<AuthProps> = () => {
 
   const signInHandler = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password)
+      // need add createUserWithEmailAndPassword separet
+      await signInWithEmailAndPassword(auth, email, password)
     } catch (err) {
       console.error(err)
     }

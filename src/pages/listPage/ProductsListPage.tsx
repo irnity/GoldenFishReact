@@ -40,12 +40,9 @@ export async function loader({ request }: request) {
 
     // get docs
     const data = await getDocs(productsCollectionRef)
-    
-    // docs to data 
-    const filteredData = data.docs.map((doc) => {
-      return [doc.data(), doc.id]
-    })
-    console.log(filteredData)
+
+    // docs to data
+    const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 
     return filteredData
   } catch (err) {
