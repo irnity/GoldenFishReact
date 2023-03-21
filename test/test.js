@@ -12,3 +12,9 @@ const arrayOfObjects = [
   { name: "Alice", age: 25, email: "alice@example.com" },
   { name: "Bob", age: 40, email: "bob@example.com" },
 ]
+
+// how to find if atleast one element of array === string
+const arr = ["apple", "banana", "cherry"]
+const str = "banana"
+const hasString = arr.some((element) => element === str)
+console.log(hasString) // Output: true

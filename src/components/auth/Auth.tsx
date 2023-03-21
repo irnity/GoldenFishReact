@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react"
+import { FunctionComponent, useState, useEffect } from "react"
 
 import { auth, googleProvider } from "../../config/firebase"
 import {
@@ -8,59 +8,68 @@ import {
   signOut,
 } from "firebase/auth"
 
+import useAuth from "../../hooks/auth-hook"
+
+import classes from "./Auth.module.css"
+import { useDispatch } from "react-redux"
+import { authActions } from "../../store/authSlice"
+
 interface AuthProps {}
 
 const Auth: FunctionComponent<AuthProps> = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
 
-  console.log(auth.currentUser?.email)
+  const {
+    email,
+    password,
+    emailSetHandler,
+    passwordSetHandler,
+    signInHandler,
+  } = useAuth()
 
   const emailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value)
+    emailSetHandler(event)
   }
 
   const passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value)
-  }
-
-  const signInHandler = async () => {
-    try {
-      // need add createUserWithEmailAndPassword separet
-      await signInWithEmailAndPassword(auth, email, password)
-    } catch (err) {
-      console.error(err)
-    }
+    passwordSetHandler(event)
   }
 
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider)
+      dispatch(authActions.logInWithPassword())
     } catch (err) {
       console.error(err)
     }
   }
 
-  const logout = async () => {
-    try {
-      await signOut(auth)
-    } catch (err) {
-      console.error(err)
-    }
+  const logout = () => {
+    dispatch(authActions.logOut())
   }
 
   return (
-    <div>
-      <input placeholder="Email..." onChange={emailHandler} type="email" />
+    <div className={classes.box}>
+      <input
+        placeholder="Email..."
+        value={email}
+        onChange={emailHandler}
+        type="email"
+      />
       <input
         placeholder="Password..."
         onChange={passwordHandler}
         type="password"
+        value={password}
       />
 
-      <button onClick={signInHandler}>Sign In</button>
-      <button onClick={signInWithGoogle}>Sign In With Google</button>
-      <button onClick={logout}>Logout</button>
+      <div>
+        <button>Log In</button>
+        <button onClick={signInHandler}>Sign In</button>
+        <button onClick={signInWithGoogle}>Sign In With Google</button>
+      </div>
+
+      <button onClick={logout}>Log out</button>
     </div>
   )
 }

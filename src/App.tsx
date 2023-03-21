@@ -1,6 +1,13 @@
 // css
 import "./App.css"
 
+// react
+import { useEffect } from "react"
+
+// redux
+import { useDispatch } from "react-redux"
+import { authActions } from "./store/authSlice"
+
 // Routes
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import RootLayout from "./pages/rootLayout/RootLayout"
@@ -20,8 +27,16 @@ import ErrorPage from "./pages/errorPage/ErrorPage"
 import OrderPage from "./pages/orderPage/orderPage"
 import Auth from "./components/auth/Auth"
 
-
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+
+    dispatch(authActions.isLogedInCheck())
+  }, [dispatch])
+
+  // console.log(new Date().toLocaleDateString())
+
   const router = createBrowserRouter([
     {
       path: "/",
