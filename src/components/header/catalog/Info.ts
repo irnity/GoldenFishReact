@@ -5,8 +5,8 @@ export const catalogList: {
   {
     name: "Каталог",
     catalog: [
-      "1Вудлища",
-      "Котушки",
+      "fishingrod",
+      "hooks",
       "Жилки",
       "Шнури",
       "Готове оснащення",

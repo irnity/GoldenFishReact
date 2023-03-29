@@ -1,8 +1,15 @@
-import { signInWithEmailAndPassword } from "firebase/auth"
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth"
+import { addDoc, collection, doc, setDoc } from "firebase/firestore"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { auth } from "../config/firebase"
+import { auth, db } from "../config/firebase"
 import { authActions } from "../store/authSlice"
+
+// user.uid - User UID
+// user.email - User email
 
 const useAuth = () => {
   const [email, setEmail] = useState("")
@@ -19,16 +26,34 @@ const useAuth = () => {
   }
 
   const signInHandler = async () => {
+    const cred = await createUserWithEmailAndPassword(auth, email, password)
+    // setDoc createNew elemets if its not existed with our id
+    setDoc(doc(db, "users", cred.user.uid), {
+      email: email,
+      userId: cred.user.uid,
+    })
+  }
+
+  const logInHandler = async () => {
     try {
       // need add createUserWithEmailAndPassword separet
-      await signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password).then((cred) =>
+        console.log(cred)
+      )
       dispatch(authActions.logInWithPassword())
     } catch (err) {
       console.error(err)
     }
   }
 
-  return { email, password, emailSetHandler, passwordSetHandler, signInHandler }
+  return {
+    email,
+    password,
+    emailSetHandler,
+    passwordSetHandler,
+    signInHandler,
+    logInHandler,
+  }
 }
 
 export default useAuth

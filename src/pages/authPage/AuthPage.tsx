@@ -10,13 +10,15 @@ import {
 
 import useAuth from "../../hooks/auth-hook"
 
-import classes from "./Auth.module.css"
+import classes from "./AuthPage.module.css"
 import { useDispatch } from "react-redux"
 import { authActions } from "../../store/authSlice"
 
+import { signGoogle } from "../../store/authActions"
+
 interface AuthProps {}
 
-const Auth: FunctionComponent<AuthProps> = () => {
+const AuthPage: FunctionComponent<AuthProps> = () => {
   const dispatch = useDispatch()
 
   const {
@@ -24,6 +26,7 @@ const Auth: FunctionComponent<AuthProps> = () => {
     password,
     emailSetHandler,
     passwordSetHandler,
+    logInHandler,
     signInHandler,
   } = useAuth()
 
@@ -35,13 +38,8 @@ const Auth: FunctionComponent<AuthProps> = () => {
     passwordSetHandler(event)
   }
 
-  const signInWithGoogle = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider)
-      dispatch(authActions.logInWithPassword())
-    } catch (err) {
-      console.error(err)
-    }
+  const logInWithGoogle = () => {
+    dispatch(signGoogle())
   }
 
   const logout = () => {
@@ -64,9 +62,9 @@ const Auth: FunctionComponent<AuthProps> = () => {
       />
 
       <div>
-        <button>Log In</button>
+        <button onClick={logInHandler}>Log In</button>
         <button onClick={signInHandler}>Sign In</button>
-        <button onClick={signInWithGoogle}>Sign In With Google</button>
+        <button onClick={logInWithGoogle}>Sign In With Google</button>
       </div>
 
       <button onClick={logout}>Log out</button>
@@ -74,4 +72,4 @@ const Auth: FunctionComponent<AuthProps> = () => {
   )
 }
 
-export default Auth
+export default AuthPage

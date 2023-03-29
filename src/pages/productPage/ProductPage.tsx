@@ -44,7 +44,13 @@ export async function loader({
   const categoryName = url.pathname.split("/")[1].toString()
   try {
     // path to document
-    const productsCollectionRef = doc(db, `${categoryName}`, `${id}`)
+    const productsCollectionRef = doc(
+      db,
+      "store",
+      `${categoryName}`,
+      "items",
+      `${id}`
+    )
 
     // get document
     const data = await getDoc(productsCollectionRef)
@@ -70,7 +76,13 @@ export async function action({
   const url = new URL(request.url)
   const categoryName = url.pathname.split("/")[1].toString()
 
-  const productsCollectionRef = doc(db, `${categoryName}`, `${id}`)
+  const productsCollectionRef = doc(
+    db,
+    "store",
+    `${categoryName}`,
+    "items",
+    `${id}`
+  )
 
   try {
     await deleteDoc(productsCollectionRef)

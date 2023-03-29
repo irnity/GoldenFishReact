@@ -146,7 +146,12 @@ export async function action({ request }: request) {
     get: (value: string) => string
   }
 
-  const productsCollectionRef = collection(db, `${data.get("category")}`)
+  const productsCollectionRef = collection(
+    db,
+    "store",
+    `${data.get("category")}`,
+    "items"
+  )
 
   // edit
   const productData = {
@@ -160,10 +165,12 @@ export async function action({ request }: request) {
     userId: auth.currentUser?.uid,
   }
   try {
+    // addDoc createNew elemets with auto id
+
     await addDoc(productsCollectionRef, productData)
   } catch (err) {
     console.error(err)
   }
 
-  return redirect("/products")
+  return redirect("/home")
 }

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import { useEffect, FunctionComponent } from "react"
 
 import { db } from "../../config/firebase"
-import { getDocs, doc, collection } from "firebase/firestore"
+import { getDocs, doc, collection, getDoc } from "firebase/firestore"
 
 interface ProductsListProps {}
 
@@ -36,13 +36,17 @@ export async function loader({ request }: request) {
 
   try {
     // get collection
-    const productsCollectionRef = collection(db, `${path}`)
+    const productsCollectionRef = collection(db, `store`, `${path}`, "items")
 
     // get docs
     const data = await getDocs(productsCollectionRef)
 
     // docs to data
     const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+
+    // const hooks = collection(db, `store`, `fishingrod`, "items")
+    // const gg = await getDocs(hooks)
+    // console.log(gg.docs.map((doc) => doc.data()))
 
     return filteredData
   } catch (err) {

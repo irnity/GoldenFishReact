@@ -25,17 +25,18 @@ import { action as addNewProduct } from "./components/main/newProductForm/NewPro
 import InformationPage from "./pages/productPage/InformationPage"
 import ErrorPage from "./pages/errorPage/ErrorPage"
 import OrderPage from "./pages/orderPage/orderPage"
-import Auth from "./components/auth/Auth"
+import AuthPage from "./pages/authPage/AuthPage"
+import { auth } from "./config/firebase"
+import ProfilePage from "./pages/profilePage/ProfilePage"
+import { info } from "./store/authActions"
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-
     dispatch(authActions.isLogedInCheck())
+    dispatch(info())
   }, [dispatch])
-
-  // console.log(new Date().toLocaleDateString())
 
   const router = createBrowserRouter([
     {
@@ -45,8 +46,8 @@ function App() {
         // home page
         { index: true, element: <HomePage /> },
         // information
-        { path: "/fs", element: <HomePage /> },
-        { path: "auth", element: <Auth /> },
+        { path: "auth", element: <AuthPage /> },
+        { path: "profile", element: <ProfilePage /> },
         { path: "order", element: <OrderPage /> },
         // products
         {

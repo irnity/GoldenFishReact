@@ -8,8 +8,16 @@ import {
   signOut,
 } from "firebase/auth"
 
-const initialAuthState: { isLogedIn: boolean } = {
+const initialAuthState: {
+  isLogedIn: boolean
+  userInfo: {
+    email: string | null | undefined
+  }
+} = {
   isLogedIn: false,
+  userInfo: {
+    email: "",
+  },
 }
 
 const authSlice = createSlice({
@@ -24,20 +32,26 @@ const authSlice = createSlice({
       if (timeStorage) {
         const now: any = new Date()
         const saved: any = new Date(timeStorage)
+
         const diffTime = Math.abs(now - saved)
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-        console.log(diffDays)
+
         if (diffDays >= 7 && logedInStorage === "true") {
+          state.isLogedIn = false
+
           localStorage.removeItem("myDate")
           localStorage.removeItem("logedIn")
 
-          state.isLogedIn = false
-          // logout
           logout()
         } else {
           state.isLogedIn = true
         }
       }
+    },
+
+    userInfoChange(state, payload) {
+      // console.log(payload.payload)
+      state.userInfo.email = payload.payload
     },
 
     logInWithPassword(state) {
