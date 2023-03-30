@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-import { auth, googleProvider } from "../config/firebase"
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth"
+import { auth } from "../config/firebase"
+import { signOut } from "firebase/auth"
 
 const initialAuthState: {
   isLogedIn: boolean
@@ -24,6 +19,7 @@ const authSlice = createSlice({
   name: "Auth",
   initialState: initialAuthState,
   reducers: {
+    // check if localstorage data is valid
     isLogedInCheck(state) {
       const logedInStorage = localStorage.getItem("logedIn")
 
@@ -49,21 +45,21 @@ const authSlice = createSlice({
       }
     },
 
+    // info about user get from auth custom hook
     userInfoChange(state, payload) {
-      // console.log(payload.payload)
       state.userInfo.email = payload.payload
     },
 
+    // login
     logInWithPassword(state) {
       state.isLogedIn = true
-
       localStorage.setItem("logedIn", "true")
       localStorage.setItem("time", new Date().toISOString())
     },
 
+    // logout
     logOut(state) {
       state.isLogedIn = false
-
       localStorage.removeItem("logedIn")
       localStorage.removeItem("time")
       logout()

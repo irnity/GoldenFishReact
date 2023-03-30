@@ -6,6 +6,7 @@ import { addDoc, collection, doc, setDoc } from "firebase/firestore"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { auth, db } from "../config/firebase"
+import { signGoogle } from "../store/authActions"
 import { authActions } from "../store/authSlice"
 
 // user.uid - User UID
@@ -17,42 +18,58 @@ const useAuth = () => {
 
   const dispatch = useDispatch()
 
-  const emailSetHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // email value
+  const emailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
   }
 
-  const passwordSetHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // password value
+  const passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value)
   }
-
-  const signInHandler = async () => {
-    const cred = await createUserWithEmailAndPassword(auth, email, password)
-    // setDoc createNew elemets if its not existed with our id
-    setDoc(doc(db, "users", cred.user.uid), {
-      email: email,
-      userId: cred.user.uid,
-    })
+  // login with google
+  const loginWithGoogleHandler = () => {
+    dispatch(signGoogle())
   }
 
-  const logInHandler = async () => {
+  // login with email & password
+  const loginHandler = async () => {
     try {
       // need add createUserWithEmailAndPassword separet
-      await signInWithEmailAndPassword(auth, email, password).then((cred) =>
-        console.log(cred)
-      )
+      const responce = await signInWithEmailAndPassword(auth, email, password)
+      // need add logic for login
+      console.log(responce)
       dispatch(authActions.logInWithPassword())
     } catch (err) {
       console.error(err)
     }
   }
 
+  // create user with email & password
+  const registrationHandler = async () => {
+    const cred = await createUserWithEmailAndPassword(auth, email, password)
+    // setDoc create new document if its not existed with custom id
+    setDoc(doc(db, "users", cred.user.uid), {
+      // user information
+      email: email,
+      userId: cred.user.uid,
+    })
+  }
+
+  // logout
+  const logout = () => {
+    dispatch(authActions.logOut())
+  }
+
   return {
     email,
     password,
-    emailSetHandler,
-    passwordSetHandler,
-    signInHandler,
-    logInHandler,
+    emailHandler,
+    passwordHandler,
+    registrationHandler,
+    loginHandler,
+    loginWithGoogleHandler,
+    logout,
   }
 }
 

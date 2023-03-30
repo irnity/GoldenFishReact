@@ -7,6 +7,7 @@ import { useEffect } from "react"
 // redux
 import { useDispatch } from "react-redux"
 import { authActions } from "./store/authSlice"
+import { info } from "./store/authActions"
 
 // Routes
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -25,10 +26,9 @@ import { action as addNewProduct } from "./components/main/newProductForm/NewPro
 import InformationPage from "./pages/productPage/InformationPage"
 import ErrorPage from "./pages/errorPage/ErrorPage"
 import OrderPage from "./pages/orderPage/orderPage"
-import AuthPage from "./pages/authPage/AuthPage"
-import { auth } from "./config/firebase"
+import SignInPage from "./pages/signinPage/SignInPagePage"
 import ProfilePage from "./pages/profilePage/ProfilePage"
-import { info } from "./store/authActions"
+import LoginPage from "./pages/LoginPage/LoginPage"
 
 function App() {
   const dispatch = useDispatch()
@@ -46,7 +46,8 @@ function App() {
         // home page
         { index: true, element: <HomePage /> },
         // information
-        { path: "auth", element: <AuthPage /> },
+        { path: "login", element: <LoginPage /> },
+        { path: "signin", element: <SignInPage /> },
         { path: "profile", element: <ProfilePage /> },
         { path: "order", element: <OrderPage /> },
         // products
