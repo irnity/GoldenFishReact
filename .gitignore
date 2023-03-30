@@ -6,6 +6,7 @@
 /ts
 /.pnp
 .pnp.js
+/src/.ini
 
 # testing
 /coverage
