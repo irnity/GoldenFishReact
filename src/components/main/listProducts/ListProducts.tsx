@@ -18,8 +18,9 @@ const ListProducts: FunctionComponent<ListProductsProps> = () => {
   const products = useSelector(
     (state: { products: ProductSliceProps }) => state.products.products
   )
-  const auth = useSelector(
-    (state: { auth: { isLogedIn: boolean } }) => state.auth.isLogedIn
+
+  const { isAdmin } = useSelector(
+    (state: { auth: { isLogedIn: boolean; isAdmin: boolean } }) => state.auth
   )
 
   return (
@@ -29,7 +30,7 @@ const ListProducts: FunctionComponent<ListProductsProps> = () => {
           <p className={classes.products_list_name_text}>Назва Товару</p>
         </div>
 
-        {auth && <AddProductButton />}
+        {isAdmin && <AddProductButton />}
       </div>
 
       <div className={classes.products_list_products}>

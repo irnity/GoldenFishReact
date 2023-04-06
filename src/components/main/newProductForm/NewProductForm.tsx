@@ -1,5 +1,12 @@
 import { nanoid } from "@reduxjs/toolkit"
-import { Form, FormMethod, Link, redirect, useNavigate } from "react-router-dom"
+import {
+  Form,
+  FormMethod,
+  Link,
+  redirect,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux/es/exports"
 import { productsActions } from "../../../store/productsSlice"
 import classes from "./NewProductForm.module.css"
@@ -13,122 +20,127 @@ interface NewProductFormProps {
 
 const NewProductForm: FunctionComponent<NewProductFormProps> = ({ method }) => {
   // add type state
-  const products = useSelector((state: any) => state.products.products) as {
-    description: string
-    title: string
-    image: string
-    price: number
-    code: string
-  }[]
+  // const products = useSelector((state: any) => state.products.products) as {
+  //   description: string
+  //   title: string
+  //   image: string
+  //   price: number
+  //   code: string
+  // }[]
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const navigation = useNavigation()
+
+  const { isLogedIn, isAdmin } = useSelector(
+    (state: { auth: { isLogedIn: boolean; isAdmin: boolean } }) => state.auth
+  )
 
   // will redirect if data not loaded
   useEffect(() => {
-    if (products.length === 0) {
-      navigate("/products")
+    if (!isAdmin && !isLogedIn) {
+      navigate(-1)
     }
-  }, [navigate, products.length])
+  }, [isAdmin, isLogedIn, navigate])
+
+  const [code, setCode] = useState("")
 
   const addProductHandler = () => {
     dispatch(productsActions.addProduct())
   }
 
-  const [code, setCode] = useState("")
-
   const codeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCode((prevState) => (prevState = e.target.value))
   }
 
-  // check if this code of product already exists
-  let finded = false
-  if (products.length !== 0) {
-    finded = products.filter((r) => r.code === code).length > 0
-  }
-
   return (
     <Form className={classes.form} method={method}>
-      <p>
-        <label htmlFor="category">Category</label>
-        <input
-          id="category"
-          type="text"
-          name="category"
-          required
-          placeholder={"products"}
-        />
-      </p>
-      {/* prevent user from post data even if he deleted required in inputs */}
-      <p>
-        <label htmlFor="code">Code</label>
-        <input
-          id="code"
-          type="text"
-          name="code"
-          value={code}
-          onChange={codeHandler}
-        />
-        {finded === true ? (
-          <span>Product already exists</span>
-        ) : (
-          <span>It`s new product</span>
-        )}
-      </p>
-      <p>
-        <label htmlFor="title">Title</label>
-        <input id="title" type="text" name="title" required defaultValue={""} />
-      </p>
-      <p>
-        <label htmlFor="image">Image</label>
-        <input id="image" type="url" name="image" required defaultValue={""} />
-      </p>
-      <p>
-        <label htmlFor="price">Price</label>
-        <input
-          id="price"
-          type="number"
-          name="price"
-          required
-          defaultValue={""}
-        />
-      </p>
-      <p>
-        <label htmlFor="inStock">inStock</label>
-        <input
-          id="inStock"
-          type="number"
-          name="inStock"
-          required
-          defaultValue={""}
-        />
-      </p>
-      <p>
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          name="description"
-          rows={5}
-          required
-          defaultValue={""}
-        />
-      </p>
+      {navigation.state === "loading" ? (
+        <p>loading</p>
+      ) : (
+        <>
+          <p>
+            <label htmlFor="category">Category</label>
+            <input
+              id="category"
+              type="text"
+              name="category"
+              required
+              placeholder={"products"}
+            />
+          </p>
+          {/* prevent user from post data even if he deleted required in inputs */}
+          <p>
+            <label htmlFor="code">Code</label>
+            <input
+              id="code"
+              type="text"
+              name="code"
+              value={code}
+              onChange={codeHandler}
+            />
+          </p>
+          <p>
+            <label htmlFor="title">Title</label>
+            <input
+              id="title"
+              type="text"
+              name="title"
+              required
+              defaultValue={""}
+            />
+          </p>
+          <p>
+            <label htmlFor="image">Image</label>
+            <input id="image" type="url" name="image" defaultValue={""} />
+          </p>
+          <p>
+            <label htmlFor="price">Price</label>
+            <input
+              id="price"
+              type="number"
+              name="price"
+              required
+              defaultValue={""}
+            />
+          </p>
+          <p>
+            <label htmlFor="inStock">inStock</label>
+            <input
+              id="inStock"
+              type="number"
+              name="inStock"
+              required
+              defaultValue={""}
+            />
+          </p>
+          <p>
+            <label htmlFor="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              rows={5}
+              required
+              defaultValue={""}
+            />
+          </p>
 
-      <div className={classes.actions}>
-        {/* navigate to home */}
-        <Link type="button" to="/products">
-          <button>Cancel</button>
-        </Link>
-        <button
-          onClick={addProductHandler}
-          disabled={finded}
-          style={
-            finded ? { backgroundColor: "red" } : { backgroundColor: "green" }
-          }
-        >
-          Submit
-        </button>
-      </div>
+          <div className={classes.actions}>
+            {/* navigate to home */}
+            <Link type="button" to="..">
+              <button style={{ backgroundColor: "red", color: "black" }}>
+                Cancel
+              </button>
+            </Link>
+            <button
+              onClick={addProductHandler}
+              style={{ backgroundColor: "green", color: "black" }}
+            >
+              Submit
+            </button>
+          </div>
+        </>
+      )}
     </Form>
   )
 }
@@ -164,6 +176,7 @@ export async function action({ request }: request) {
     inStock: parseInt(data.get("inStock")),
     userId: auth.currentUser?.uid,
   }
+
   try {
     // addDoc createNew elemets with auto id
 
@@ -172,5 +185,5 @@ export async function action({ request }: request) {
     console.error(err)
   }
 
-  return redirect("/home")
+  return redirect(`/${data.get("category")}`)
 }

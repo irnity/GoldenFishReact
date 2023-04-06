@@ -1,4 +1,4 @@
-import { signInWithPopup, signOut } from "firebase/auth"
+import { signInWithPopup } from "firebase/auth"
 import { Dispatch, AnyAction } from "redux"
 import { auth, googleProvider } from "../config/firebase"
 import { authActions } from "./authSlice"
@@ -10,7 +10,7 @@ export const info = (): any => {
     let email: string | null = "email"
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user)
+        // console.log(user)
         email = user.email
       } else {
         email = "not loged IN"
@@ -26,10 +26,13 @@ export const signGoogle = (): any => {
     // try login with google
     const signInWithGoogle = async () => {
       try {
-        await signInWithPopup(auth, googleProvider).then((cred) =>
-          console.log(cred)
-        )
-        dispatch(authActions.logInWithPassword())
+        const responce = await signInWithPopup(auth, googleProvider)
+
+        // console.log(responce)
+
+        const admin = (await responce.user.getIdTokenResult()).claims
+
+        dispatch(authActions.logInWithPassword(admin))
       } catch (err) {
         console.error(err)
       }

@@ -5,11 +5,13 @@ import { signOut } from "firebase/auth"
 
 const initialAuthState: {
   isLogedIn: boolean
+  isAdmin: boolean
   userInfo: {
     email: string | null | undefined
   }
 } = {
   isLogedIn: false,
+  isAdmin: false,
   userInfo: {
     email: "",
   },
@@ -22,7 +24,7 @@ const authSlice = createSlice({
     // check if localstorage data is valid
     isLogedInCheck(state) {
       const logedInStorage = localStorage.getItem("logedIn")
-
+      const isUserAdministrator = localStorage.getItem("isUserAdministrator")
       const timeStorage = localStorage.getItem("time")
 
       if (timeStorage) {
@@ -34,13 +36,16 @@ const authSlice = createSlice({
 
         if (diffDays >= 7 && logedInStorage === "true") {
           state.isLogedIn = false
-
+          localStorage.removeItem("isUserAdministrator")
           localStorage.removeItem("myDate")
           localStorage.removeItem("logedIn")
 
           logout()
         } else {
           state.isLogedIn = true
+          if (isUserAdministrator) {
+            state.isAdmin = true
+          }
         }
       }
     },
@@ -51,17 +56,25 @@ const authSlice = createSlice({
     },
 
     // login
-    logInWithPassword(state) {
+    logInWithPassword(state, payload) {
       state.isLogedIn = true
       localStorage.setItem("logedIn", "true")
       localStorage.setItem("time", new Date().toISOString())
+      console.log(payload.payload.admin)
+      if (payload.payload.admin === true) {
+        localStorage.setItem("isUserAdministrator", "true")
+        state.isAdmin = true
+      }
     },
 
     // logout
     logOut(state) {
       state.isLogedIn = false
+      state.isAdmin = false
       localStorage.removeItem("logedIn")
       localStorage.removeItem("time")
+      localStorage.removeItem("isUserAdministrator")
+
       logout()
     },
   },

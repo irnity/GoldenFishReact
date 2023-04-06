@@ -2,12 +2,15 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth"
-import { addDoc, collection, doc, setDoc } from "firebase/firestore"
+import { doc, setDoc } from "firebase/firestore"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { auth, db } from "../config/firebase"
 import { signGoogle } from "../store/authActions"
 import { authActions } from "../store/authSlice"
+
+import { getFunctions, httpsCallable } from "firebase/functions"
+import { useNavigate } from "react-router-dom"
 
 // user.uid - User UID
 // user.email - User email
@@ -15,6 +18,8 @@ import { authActions } from "../store/authSlice"
 const useAuth = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -38,8 +43,14 @@ const useAuth = () => {
       // need add createUserWithEmailAndPassword separet
       const responce = await signInWithEmailAndPassword(auth, email, password)
       // need add logic for login
-      console.log(responce)
-      dispatch(authActions.logInWithPassword())
+      // console.log(responce)
+
+      // check if token admin is true
+      const admin = (await responce.user.getIdTokenResult()).claims
+
+      dispatch(authActions.logInWithPassword(admin))
+
+      navigate("/")
     } catch (err) {
       console.error(err)
     }
@@ -54,6 +65,9 @@ const useAuth = () => {
       email: email,
       userId: cred.user.uid,
     })
+    const functions = getFunctions()
+    const addAdminRole = httpsCallable(functions, "addAdminRole")
+    addAdminRole({ email }).then((result) => console.log(result))
   }
 
   // logout
